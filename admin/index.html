@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>لوحة تحكم أمور</title>
+  <style>
+    *{box-sizing:border-box}
+    :root{--bg:#070707;--panel:#0d0d0d;--line:#272727;--soft:#8b8b8b;--text:#f5f0e8;--accent:#b9dceb}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,"Noto Kufi Arabic",sans-serif}
+    button,input,textarea,select{font:inherit}
+    button{cursor:pointer}
+    .topbar{position:sticky;top:0;z-index:40;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:rgba(8,8,8,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(16px)}
+    .topbar strong{font-size:18px}.who{font-size:11px;color:var(--accent);margin-right:8px}
+    .top-actions{display:flex;gap:8px}
+    .btn{border:1px solid #303030;background:#151515;color:#ddd;border-radius:10px;padding:10px 14px;font-weight:700}
+    .btn.primary{background:#f3eee5;color:#101010;border-color:#f3eee5}.btn.danger{background:#271111;color:#f0aaaa;border-color:#472020}
+    .layout{width:min(1500px,calc(100% - 24px));margin:18px auto 60px;display:grid;grid-template-columns:320px 1fr;gap:16px}
+    .panel{background:var(--panel);border:1px solid var(--line);border-radius:16px}
+    .sidebar{position:sticky;top:86px;height:max-content;padding:16px}.sidebar h2{font-size:18px;margin:0 0 6px}.muted{font-size:12px;color:#777;line-height:1.8}
+    .project-list{display:grid;gap:7px;margin-top:14px}.project-item{padding:11px 12px;background:#090909;border:1px solid #232323;border-radius:10px;cursor:pointer}.project-item.active{border-color:#7899a7;background:#0d1416}.project-item strong{display:block;font-size:13px}.project-item small{color:#666;font-size:10px}
+    .editor{min-width:0;overflow:hidden}.editor-head{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;align-items:center}.editor-head h1{font-size:22px;margin:0}.save-state{font-size:10px;color:var(--accent)}
+    .main-tabs{display:flex;gap:8px;padding:12px 18px;border-bottom:1px solid var(--line);overflow:auto;scrollbar-width:none}.main-tab{white-space:nowrap;border:1px solid #2b2b2b;background:#121212;color:#aaa;padding:10px 14px;border-radius:10px;font-weight:700}.main-tab.active{background:#eee9df;color:#111}
+    .main-section{display:none;padding:20px}.main-section.active{display:block}
+    .section-box{border:1px solid #252525;border-radius:14px;padding:16px;margin-bottom:14px;background:#0a0a0a}.section-box h3{margin:0 0 5px;font-size:16px}.section-box p{margin:0 0 12px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+    label{display:block;font-size:11px;color:#aaa;margin:8px 0 6px}
+    input,textarea,select{width:100%;background:#111;color:#fff;border:1px solid #303030;border-radius:9px;padding:11px 12px;outline:none}
+    textarea{min-height:112px;resize:vertical}.smallarea{min-height:76px}
+    .upload-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .preview-logo{height:150px;border:1px solid #272727;border-radius:10px;display:grid;place-items:center;background:#080808;overflow:hidden;margin-top:10px}.preview-logo img{max-height:120px;max-width:80%;object-fit:contain}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .status{min-height:24px;color:#b9dceb;font-size:12px;margin-top:10px;line-height:1.7}
+    .content-tabs{display:flex;gap:7px;overflow:auto;padding-bottom:9px;scrollbar-width:none}.content-tab{white-space:nowrap}.content-tab.active{background:#eee9df;color:#111}
+    .content-panel{display:none}.content-panel.active{display:block}
+    .image-row{display:grid;grid-template-columns:1fr 80px 1fr 42px;gap:7px;margin:7px 0}.image-row input{direction:ltr}.xbtn{background:#271111;color:#efa3a3;border:1px solid #472020;border-radius:8px}
+    .products-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+    .product-list{display:grid;gap:12px}.product-card{border:1px solid #292929;border-radius:14px;background:#090909;padding:14px}.product-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px}.product-head strong{font-size:14px}
+    .product-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}.product-preview{height:170px;border:1px solid #242424;border-radius:10px;background:#070707;display:flex;justify-content:center;align-items:center;gap:10px;overflow:hidden;margin-top:10px}.product-preview img{max-width:46%;max-height:145px;object-fit:contain}
+    .checkline{display:flex;align-items:center;gap:8px;margin-top:10px}.checkline input{width:auto}
+    .login-note{font-size:11px;color:#666}
+    @media(max-width:1000px){.layout{grid-template-columns:1fr}.sidebar{position:static}.row,.row3,.product-fields,.upload-pair{grid-template-columns:1fr}.image-row{grid-template-columns:1fr 70px 1fr 40px}}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div><strong>لوحة تحكم أمور</strong><span class="who" id="who">...</span></div>
+  <div class="top-actions">
+    <button class="btn" id="newProjectBtn" type="button">مشروع جديد</button>
+    <button class="btn danger" id="logoutBtn" type="button">تسجيل الخروج</button>
+  </div>
+</header>
+
+<main class="layout">
+  <aside class="panel sidebar">
+    <h2>المشاريع</h2>
+    <p class="muted">اختار مشروع من هنا، وبعدها كل حاجة هتلاقيها في مكانها الواضح.</p>
+    <div class="project-list" id="projectsList"></div>
+  </aside>
+
+  <section class="panel editor">
+    <div class="editor-head">
+      <div>
+        <h1 id="editorTitle">مشروع جديد</h1>
+        <div class="muted">كل تبويب مسؤول عن حاجة واحدة فقط.</div>
+      </div>
+      <span class="save-state" id="saveState">غير محفوظ</span>
+    </div>
+
+    <nav class="main-tabs">
+      <button class="main-tab active" data-main="basic" type="button">البيانات الأساسية</button>
+      <button class="main-tab" data-main="identity" type="button">الهوية واللوجو</button>
+      <button class="main-tab" data-main="content" type="button">محتوى المشروع</button>
+      <button class="main-tab" data-main="products" type="button">المنتجات والتيشيرتات</button>
+    </nav>
+
+    <form id="projectForm">
+      <input type="hidden" id="projectId">
+
+      <section class="main-section active" data-main-panel="basic">
+        <div class="section-box">
+          <h3>بيانات المشروع</h3>
+          <p class="muted">الاسم، وصف قصير، وترتيبه في صفحة الأعمال.</p>
+          <div class="row">
+            <div><label>اسم المشروع — عربي</label><input id="title" required></div>
+            <div><label>الرابط المختصر للمشروع</label><input id="slug" dir="ltr" required></div>
+          </div>
+          <div class="row">
+            <div><label>Project name — English</label><input id="titleEn" dir="ltr"></div>
+            <div><label>Project category — English</label><input id="categoryEn" dir="ltr"></div>
+          </div>
+          <label>نوع المشروع / التصنيف — عربي</label>
+          <input id="category" placeholder="مثال: بناء علامة تجارية وهوية بصرية">
+          <div class="row">
+            <div><label>الوصف المختصر — عربي</label><textarea id="subtitle" class="smallarea"></textarea></div>
+            <div><label>Short description — English</label><textarea id="subtitleEn" class="smallarea" dir="ltr"></textarea></div>
+          </div>
+          <div class="row">
+            <div><label>الترتيب في صفحة الأعمال</label><input id="sortOrder" type="number" value="1"></div>
+            <div class="checkline"><input id="published" type="checkbox" checked><label for="published" style="margin:0">إظهار المشروع للزوار</label></div>
+          </div>
+        </div>
+
+        <div class="section-box">
+          <h3>صورة خلفية المشروع</h3>
+          <p class="muted">دي صورة جو عام للمشروع بنستخدمها كخلفية سينمائية خفيفة، مش هي العنصر الرئيسي.</p>
+          <div class="upload-pair">
+            <div><label>رفع الصورة</label><input id="coverFile" type="file" accept="image/*"></div>
+            <div><label>رابط الصورة</label><input id="coverUrl" dir="ltr"></div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" type="submit">حفظ البيانات الأساسية</button>
+          <button class="btn danger" id="deleteProjectBtn" type="button">حذف المشروع</button>
+        </div>
+      </section>
+
+      <section class="main-section" data-main-panel="identity">
+        <div class="section-box">
+          <h3>لوجو المشروع</h3>
+          <p class="muted">استخدم نسخة PNG أو WebP بخلفية شفافة. ده هو بطل المشهد في بداية المشروع وخارجه.</p>
+          <div class="upload-pair">
+            <div><label>رفع اللوجو المتفرغ</label><input id="logoFile" type="file" accept="image/png,image/webp,image/svg+xml"></div>
+            <div><label>رابط اللوجو</label><input id="logoUrl" dir="ltr"></div>
+          </div>
+          <div class="preview-logo" id="logoPreview"></div>
+        </div>
+
+        <div class="section-box">
+          <h3>شكل وحركة المشهد</h3>
+          <div class="row3">
+            <div>
+              <label>لون الهوية الرئيسي</label>
+              <input id="accentColor" type="color" value="#9d1717" style="height:46px;padding:4px">
+            </div>
+            <div>
+              <label>طابع الخلفية</label>
+              <select id="mood">
+                <option value="dark">سينمائي داكن</option>
+                <option value="red">قتالي / أحمر</option>
+                <option value="warm">دافئ / ذهبي</option>
+                <option value="cool">بارد / أزرق</option>
+                <option value="mono">أبيض وأسود</option>
+              </select>
+            </div>
+            <div>
+              <label>حركة اللوجو</label>
+              <select id="heroMotion">
+                <option value="amur">تفاعلي — نفس حركة لوجو أمور</option>
+                <option value="static">ثابت</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:12px">
+            <div>
+              <label>طريقة عرض اللوجو</label>
+              <select id="heroStyle">
+                <option value="royal">ملكي — إضاءة علوية وهيبة</option>
+                <option value="rim">حواف ضوئية — بدون هالة خلفية</option>
+                <option value="smoke">دخاني سينمائي</option>
+                <option value="clean">نظيف — أقل مؤثرات</option>
+                <option value="gallery">معرض فاخر — ضوء جانبي</option>
+              </select>
+            </div>
+            <div>
+              <label>حجم اللوجو في أول مشهد</label>
+              <div style="display:grid;grid-template-columns:1fr 72px;gap:9px;align-items:center">
+                <input id="heroLogoSize" type="range" min="70" max="145" step="5" value="100">
+                <output id="heroLogoSizeValue" style="text-align:center;color:#fff;font-weight:700">100%</output>
+              </div>
+            </div>
+          </div>
+          <p class="muted" style="margin-top:10px">ميكانيزم أمور = سحب حر 360° + قصور ذاتي + عوم خفيف + رجوع تلقائي للوضع الطبيعي.</p>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" type="submit">حفظ الهوية والحركة</button>
+        </div>
+      </section>
+    </form>
+
+    <section class="main-section" data-main-panel="content">
+      <div class="section-box">
+        <h3>أجزاء القصة</h3>
+        <p class="muted">اختار عدد الأقسام اللي محتاجها للمشروع. كل قسم له عنوان، وصف وصور مستقلة.</p>
+
+        <div class="row" style="align-items:end;margin:14px 0 18px">
+          <div>
+            <label>عدد الأقسام</label>
+            <input id="sectionCount" type="number" min="1" max="12" step="1" value="6">
+          </div>
+          <div>
+            <button class="btn" id="applySectionCountBtn" type="button" style="width:100%">تطبيق العدد</button>
+          </div>
+        </div>
+
+        <div class="content-tabs" id="sectionTabs"></div>
+        <div id="sectionPanels"></div>
+        <div class="actions">
+          <button class="btn primary" id="saveSectionsBtn" type="button">حفظ محتوى المشروع</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="main-section" data-main-panel="products">
+      <div class="section-box">
+        <h3>عنوان جزء المنتجات</h3>
+        <p class="muted">العنوان والوصف دول هيظهروا فوق المنتجات داخل صفحة المشروع.</p>
+
+        <div class="row">
+          <div>
+            <label>العنوان الصغير — عربي</label>
+            <input id="productsEyebrow" value="المنتجات">
+          </div>
+          <div>
+            <label>عنوان الصفحة / الجزء — عربي</label>
+            <input id="productsSectionTitle" value="المنتجات">
+          </div>
+        </div>
+        <div class="row">
+          <div><label>Small title — English</label><input id="productsEyebrowEn" dir="ltr" value="Products"></div>
+          <div><label>Section title — English</label><input id="productsSectionTitleEn" dir="ltr" value="Products"></div>
+        </div>
+        <div class="row">
+          <div><label>وصف الجزء — عربي</label><textarea id="productsSectionDescription" class="smallarea" placeholder="اكتب وصف قصير للمنتجات أو فكرة الكوليكشن..."></textarea></div>
+          <div><label>Section description — English</label><textarea id="productsSectionDescriptionEn" class="smallarea" dir="ltr"></textarea></div>
+        </div>
+      </div>
+
+      <div class="section-box">
+        <div class="products-toolbar">
+          <div>
+            <h3>المنتجات والتيشيرتات</h3>
+            <p class="muted">تقدر تضيف أي عدد. كل منتج له وش وضهر وحركة خاصة به.</p>
+          </div>
+          <button class="btn primary" id="addProductBtn" type="button">إضافة منتج</button>
+        </div>
+        <div class="product-list" id="productList"></div>
+        <div class="actions">
+          <button class="btn primary" id="saveProductsBtn" type="button">حفظ المنتجات</button>
+        </div>
+      </div>
+    </section>
+
+    <div style="padding:0 20px 20px">
+      <p class="status" id="status"></p>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/config.js"></script>
+<script src="../js/i18n-core.js?v=3601"></script>
+<script src="../js/admin.js"></script>
+</body>
+</html>

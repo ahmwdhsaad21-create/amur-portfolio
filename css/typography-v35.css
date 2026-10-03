@@ -1,0 +1,174 @@
+/* AMUR V35 — explicit public typography layer. Loaded LAST on purpose. */
+:root{
+  --v35-en:"Inter Tight","Manrope",Arial,sans-serif;
+  --v35-ar:"IBM Plex Sans Arabic","Noto Kufi Arabic",Arial,sans-serif;
+}
+
+/* Base public typography */
+body.lang-en{font-family:var(--v35-en)!important}
+body.lang-ar{font-family:var(--v35-ar)!important}
+
+/* EN: thin editorial display, not blocky */
+body.lang-en .hero-copy h1,
+body.lang-en .about-copy h3,
+body.lang-en .work-head h2,
+body.lang-en .services-head h2,
+body.lang-en .process-copy h2,
+body.lang-en .process-card h3,
+body.lang-en .contact-copy h2{
+  font-family:var(--v35-en)!important;
+  font-weight:300!important;
+  letter-spacing:-.055em!important;
+  text-transform:none!important;
+  font-variation-settings:"wght" 300!important;
+  text-wrap:balance!important;
+}
+
+body.lang-en .hero-copy h1{
+  font-size:clamp(54px,4.15vw,78px)!important;
+  line-height:1.03!important;
+  max-width:900px!important;
+  margin-bottom:28px!important;
+}
+body.lang-en .hero-copy h1 span{white-space:nowrap!important}
+body.lang-en .hero-copy p{
+  font-family:var(--v35-en)!important;
+  font-weight:300!important;
+  font-size:15px!important;
+  line-height:1.65!important;
+  max-width:690px!important;
+  letter-spacing:-.012em!important;
+}
+
+body.lang-en .work-head h2,
+body.lang-en .services-head h2,
+body.lang-en .process-copy h2,
+body.lang-en .contact-copy h2{
+  font-size:clamp(42px,3vw,58px)!important;
+  line-height:1.06!important;
+  max-width:none!important;
+  white-space:nowrap!important;
+  margin-top:0!important;
+}
+
+body.lang-en .about-copy h3{
+  font-size:clamp(34px,2.7vw,52px)!important;
+  line-height:1.16!important;
+  max-width:900px!important;
+}
+
+body.lang-en .process-card h3{
+  font-size:clamp(34px,2.55vw,48px)!important;
+  line-height:1.08!important;
+  max-width:820px!important;
+}
+
+/* Small copy: cleaner rhythm */
+body.lang-en .nav-links,
+body.lang-en .work-head p,
+body.lang-en .service-row p,
+body.lang-en .process-copy p,
+body.lang-en .process-card p,
+body.lang-en .contact-copy p,
+body.lang-en .line-link{
+  font-family:var(--v35-en)!important;
+  font-weight:300!important;
+  letter-spacing:-.01em!important;
+}
+
+/* Service labels also lighter */
+body.lang-en .service-row h3{
+  font-family:var(--v35-en)!important;
+  font-weight:300!important;
+  letter-spacing:-.035em!important;
+  text-transform:none!important;
+}
+
+/* Arabic: elegant and lighter, without over-bold Changa feel */
+body.lang-ar .hero-copy h1,
+body.lang-ar .about-copy h3,
+body.lang-ar .work-head h2,
+body.lang-ar .services-head h2,
+body.lang-ar .process-copy h2,
+body.lang-ar .process-card h3,
+body.lang-ar .contact-copy h2,
+body.lang-ar .service-row h3{
+  font-family:var(--v35-ar)!important;
+  font-weight:400!important;
+  letter-spacing:-.025em!important;
+  text-transform:none!important;
+}
+body.lang-ar .hero-copy h1{font-size:clamp(52px,4.25vw,80px)!important;line-height:1.18!important}
+body.lang-ar .work-head h2,
+body.lang-ar .services-head h2,
+body.lang-ar .process-copy h2,
+body.lang-ar .contact-copy h2{font-size:clamp(40px,3vw,58px)!important;line-height:1.25!important;max-width:none!important}
+
+/* Desktop stage: raise content and give headings room horizontally */
+@media(min-width:1100px){
+  .scene>.shell{transform:translateY(-8vh)!important}
+  .scene-hero>.shell{transform:translateY(-6vh)!important}
+  .scene-services>.shell,.scene-process>.shell{transform:translateY(-9vh)!important}
+  .contact-inner{transform:translateY(-8vh)!important}
+
+  .scene-grid.hero-grid{grid-template-columns:.9fr 1.1fr!important;gap:64px!important}
+  .hero-copy{min-width:0!important}
+  .services-head,.process-copy,.contact-copy{max-width:none!important;width:100%!important}
+  .process-scene{grid-template-columns:.92fr 1.08fr!important;gap:16px 62px!important}
+  .scene-work .work-head{grid-template-columns:1.45fr .55fr!important;gap:42px!important}
+}
+
+/* Project page gets the same lighter public type */
+body.lang-en.single-project-experience-page,
+body.lang-en .single-project-experience-page{font-family:var(--v35-en)!important}
+.single-project-experience-page .px-title,
+.single-project-experience-page .px-copy h2,
+.single-project-experience-page .px-products-copy h2{
+  font-family:var(--v35-en)!important;
+  font-weight:300!important;
+  letter-spacing:-.045em!important;
+}
+html[dir="rtl"] .single-project-experience-page .px-title,
+html[dir="rtl"] .single-project-experience-page .px-copy h2,
+html[dir="rtl"] .single-project-experience-page .px-products-copy h2{
+  font-family:var(--v35-ar)!important;
+  font-weight:400!important;
+  letter-spacing:-.02em!important;
+}
+
+/* Mobile: natural wrapping, no giant stacked typography */
+@media(max-width:760px){
+  .scene>.shell,.scene-hero>.shell,.scene-services>.shell,.scene-process>.shell,.contact-inner{transform:none!important}
+
+  body.lang-en .hero-copy h1{
+    font-size:clamp(36px,9.5vw,48px)!important;
+    line-height:1.05!important;
+    letter-spacing:-.045em!important;
+  }
+  body.lang-en .hero-copy h1 span{white-space:normal!important}
+
+  body.lang-en .work-head h2,
+  body.lang-en .services-head h2,
+  body.lang-en .process-copy h2,
+  body.lang-en .contact-copy h2,
+  body.lang-ar .work-head h2,
+  body.lang-ar .services-head h2,
+  body.lang-ar .process-copy h2,
+  body.lang-ar .contact-copy h2{
+    white-space:normal!important;
+    font-size:clamp(28px,7.7vw,40px)!important;
+    line-height:1.12!important;
+    max-width:100%!important;
+  }
+
+  body.lang-en .about-copy h3,
+  body.lang-en .process-card h3,
+  body.lang-ar .about-copy h3,
+  body.lang-ar .process-card h3{
+    font-size:clamp(27px,7vw,38px)!important;
+    line-height:1.18!important;
+  }
+
+  .scene-work .work-head,.process-scene{grid-template-columns:1fr!important}
+  .hero-copy p,.work-head p,.process-copy p,.process-card p,.contact-copy p{font-size:12px!important;line-height:1.65!important}
+}

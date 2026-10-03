@@ -1,0 +1,1503 @@
+
+/* =====================================================================
+   AMUR PROJECT — GRID FINAL
+   Normal sections use a real two-column layout so copy and media cannot overlap.
+   ===================================================================== */
+
+:root{
+  --hero-logo-scale:1;
+  --page-x:clamp(54px,6vw,118px);
+}
+
+/* ---------- full stage ---------- */
+.single-project-experience-page .px-shell.shell{
+  position:relative!important;
+  z-index:6!important;
+  width:100vw!important;
+  max-width:none!important;
+  height:100%!important;
+  margin:0!important;
+  padding:0!important;
+}
+
+.single-project-experience-page .px-stage{
+  position:absolute!important;
+  inset:0!important;
+  width:100vw!important;
+  height:100%!important;
+  overflow:hidden!important;
+}
+
+.single-project-experience-page .px-step{
+  position:absolute!important;
+  inset:0!important;
+  width:100vw!important;
+  height:100%!important;
+  margin:0!important;
+  padding:0!important;
+  box-sizing:border-box!important;
+}
+
+/* ---------- hero: higher and dead-center ---------- */
+.single-project-experience-page .px-project-name{
+  position:absolute!important;
+  z-index:50!important;
+  top:94px!important;
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  width:min(88vw,1240px)!important;
+  text-align:center!important;
+  color:#f4f0e8!important;
+  font-family:"Cinzel","Changa",serif!important;
+  font-size:clamp(22px,2vw,35px)!important;
+  line-height:1.1!important;
+  font-weight:600!important;
+  white-space:nowrap!important;
+  pointer-events:none!important;
+}
+
+.single-project-experience-page .px-intro-mark{
+  position:absolute!important;
+  z-index:40!important;
+  left:5vw!important;
+  right:5vw!important;
+  top:112px!important;
+  bottom:52px!important;
+  display:grid!important;
+  place-items:center!important;
+  pointer-events:auto!important;
+  touch-action:none!important;
+  user-select:none!important;
+  cursor:grab!important;
+}
+.single-project-experience-page .px-intro-mark.dragging{cursor:grabbing!important}
+
+.single-project-experience-page .px-logo-host{
+  width:min(88vw,1380px)!important;
+  height:min(58vh,620px)!important;
+  margin-top:-34px!important;
+  transform:scale(var(--hero-logo-scale))!important;
+  transform-origin:center!important;
+  pointer-events:none!important;
+  perspective:1500px!important;
+}
+.single-project-experience-page .project-logo-rotor{
+  position:relative!important;
+  width:100%!important;
+  height:100%!important;
+  transform-style:preserve-3d!important;
+  will-change:transform!important;
+}
+.single-project-experience-page .project-logo-face{
+  position:absolute!important;
+  inset:0!important;
+  display:grid!important;
+  place-items:center!important;
+  backface-visibility:hidden!important;
+  -webkit-backface-visibility:hidden!important;
+  pointer-events:none!important;
+}
+.single-project-experience-page .project-logo-face.back{transform:rotateY(180deg)!important}
+.single-project-experience-page .project-logo-face img{
+  width:auto!important;
+  height:auto!important;
+  max-width:95%!important;
+  max-height:95%!important;
+  object-fit:contain!important;
+  pointer-events:none!important;
+}
+
+/* hero visual styles */
+body[data-hero-style="royal"] .project-logo-face img{
+  filter:drop-shadow(0 30px 42px rgba(0,0,0,.68))
+         drop-shadow(10px 0 15px color-mix(in srgb,var(--project-accent) 47%,transparent))
+         drop-shadow(-5px 0 10px rgba(255,245,220,.10))!important;
+}
+body[data-hero-style="rim"] .project-logo-face img{
+  filter:drop-shadow(15px 0 16px color-mix(in srgb,var(--project-accent) 76%,transparent))
+         drop-shadow(-15px 0 16px rgba(215,240,255,.18))
+         drop-shadow(0 27px 37px rgba(0,0,0,.61))!important;
+}
+body[data-hero-style="smoke"] .project-logo-face img{
+  filter:drop-shadow(0 35px 48px rgba(0,0,0,.73))
+         drop-shadow(0 0 27px color-mix(in srgb,var(--project-accent) 39%,transparent))!important;
+}
+body[data-hero-style="clean"] .project-logo-face img{
+  filter:drop-shadow(0 24px 34px rgba(0,0,0,.56))!important;
+}
+body[data-hero-style="gallery"] .project-logo-face img{
+  filter:drop-shadow(-17px 0 19px rgba(220,240,255,.12))
+         drop-shadow(17px 0 18px color-mix(in srgb,var(--project-accent) 43%,transparent))
+         drop-shadow(0 31px 43px rgba(0,0,0,.64))!important;
+}
+
+/* =====================================================================
+   NORMAL SECTIONS
+   real grid = media 40% | gap | copy 52%
+   ===================================================================== */
+.single-project-experience-page .px-grid-section{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+}
+
+.single-project-experience-page .px-layout-grid{
+  width:min(88vw,1540px)!important;
+  height:72vh!important;
+  margin-top:48px!important;
+  display:grid!important;
+  grid-template-columns:minmax(360px,40%) minmax(0,52%)!important;
+  grid-template-areas:"visual copy"!important;
+  gap:8%!important;
+  align-items:center!important;
+  direction:ltr!important;
+}
+
+/* no media => copy gets the whole useful width */
+.single-project-experience-page .px-layout-grid.no-media{
+  grid-template-columns:1fr!important;
+  grid-template-areas:"copy"!important;
+  width:min(78vw,1180px)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+/* media only => visual gets most of the page */
+.single-project-experience-page .px-layout-grid.has-media.no-body{
+  grid-template-columns:minmax(0,58%) minmax(300px,34%)!important;
+  gap:8%!important;
+}
+
+.single-project-experience-page .px-grid-visual{
+  grid-area:visual!important;
+  width:100%!important;
+  height:100%!important;
+  min-width:0!important;
+  display:grid!important;
+  place-items:center!important;
+  direction:rtl!important;
+  overflow:visible!important;
+}
+
+.single-project-experience-page .px-grid-copy{
+  grid-area:copy!important;
+  width:100%!important;
+  height:auto!important;
+  max-height:100%!important;
+  min-width:0!important;
+  align-self:center!important;
+  direction:rtl!important;
+  text-align:right!important;
+  padding:30px 34px 32px!important;
+  box-sizing:border-box!important;
+
+  /* simple glass glow — no hard box */
+  border:0!important;
+  border-radius:28px!important;
+  background:
+    radial-gradient(circle at 82% 18%,rgba(255,255,255,.045),transparent 42%),
+    linear-gradient(270deg,rgba(255,255,255,.018),rgba(255,255,255,.006) 60%,transparent)!important;
+  box-shadow:0 0 64px color-mix(in srgb,var(--project-accent) 4%,transparent)!important;
+  backdrop-filter:blur(5px)!important;
+  -webkit-backdrop-filter:blur(5px)!important;
+}
+
+.single-project-experience-page .px-grid-copy.no-body{
+  background:transparent!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  padding-top:0!important;
+}
+
+.single-project-experience-page .px-grid-kicker{
+  height:18px!important;
+  margin-bottom:12px!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  color:#555a56!important;
+  font:8px "Manrope",sans-serif!important;
+  letter-spacing:.12em!important;
+  opacity:.75!important;
+}
+.single-project-experience-page .px-grid-kicker span{color:var(--project-accent)!important}
+.single-project-experience-page .px-grid-kicker b{font-weight:500!important}
+
+.single-project-experience-page .px-grid-title{
+  width:100%!important;
+  margin:0!important;
+  color:#f4f0e8!important;
+  font-family:"Changa",sans-serif!important;
+  font-size:58px;
+  line-height:1.08!important;
+  font-weight:600!important;
+  text-align:right!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+}
+
+.single-project-experience-page .px-grid-body{
+  width:100%!important;
+  margin-top:20px!important;
+  color:#c7c9c5!important;
+  font-family:"Noto Kufi Arabic","Changa",sans-serif!important;
+  font-size:15.5px!important;
+  line-height:1.92!important;
+  font-weight:400!important;
+  text-align:right!important;
+  overflow:visible!important;
+  max-height:none!important;
+}
+
+/* ---------- images ---------- */
+.single-project-experience-page .px-grid-image{
+  margin:0!important;
+  overflow:hidden!important;
+  border-radius:16px!important;
+  border:1px solid rgba(255,255,255,.055)!important;
+  background:#070808!important;
+  box-shadow:0 28px 75px rgba(0,0,0,.30)!important;
+}
+.single-project-experience-page .px-grid-image img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+}
+.single-project-experience-page .px-grid-image.ratio-wide{width:100%!important;aspect-ratio:16/9!important}
+.single-project-experience-page .px-grid-image.ratio-landscape{width:min(100%,660px)!important;aspect-ratio:4/3!important}
+.single-project-experience-page .px-grid-image.ratio-square{width:min(100%,560px)!important;aspect-ratio:1!important}
+.single-project-experience-page .px-grid-image.ratio-portrait{width:min(100%,470px)!important;aspect-ratio:4/5!important}
+.single-project-experience-page .px-grid-image.ratio-fill{width:100%!important;height:100%!important}
+
+/* ---------- media deck ---------- */
+.single-project-experience-page .px-media-deck{
+  position:relative!important;
+  width:min(100%,650px)!important;
+  height:min(100%,620px)!important;
+  margin:auto!important;
+  perspective:1500px!important;
+  isolation:isolate!important;
+}
+.single-project-experience-page .px-media-card{
+  position:absolute!important;
+  border:0!important;
+  padding:0!important;
+  margin:0!important;
+  background:transparent!important;
+  cursor:pointer!important;
+  transform-origin:center bottom!important;
+  transition:transform .58s cubic-bezier(.22,1,.36,1),opacity .42s ease,filter .42s ease!important;
+}
+.single-project-experience-page .px-media-deck.ratio-wide .px-media-card{inset:16% 2% 16%!important}
+.single-project-experience-page .px-media-deck.ratio-landscape .px-media-card{inset:9% 5% 10%!important}
+.single-project-experience-page .px-media-deck.ratio-square .px-media-card{inset:5% 12% 7%!important}
+.single-project-experience-page .px-media-deck.ratio-portrait .px-media-card{inset:2% 19% 4%!important}
+.single-project-experience-page .px-media-deck.ratio-fill .px-media-card{inset:2%!important}
+.single-project-experience-page .px-media-card img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  display:block!important;
+  border-radius:16px!important;
+  background:#080808!important;
+  border:1px solid rgba(255,255,255,.06)!important;
+  box-shadow:0 28px 80px rgba(0,0,0,.46)!important;
+}
+.single-project-experience-page .px-media-card[data-offset="0"]{z-index:30!important;transform:translate3d(0,0,70px) rotateZ(0) scale(1)!important;opacity:1!important;filter:none!important}
+.single-project-experience-page .px-media-card[data-offset="1"]{z-index:25!important;transform:translate3d(-27px,18px,20px) rotateZ(-2deg) scale(.966)!important;opacity:.78!important;filter:brightness(.76)!important}
+.single-project-experience-page .px-media-card[data-offset="2"]{z-index:20!important;transform:translate3d(29px,35px,0) rotateZ(2.4deg) scale(.935)!important;opacity:.55!important;filter:brightness(.61)!important}
+.single-project-experience-page .px-media-card[data-offset="3"]{z-index:15!important;transform:translate3d(-14px,49px,-20px) rotateZ(-1.2deg) scale(.91)!important;opacity:.35!important;filter:brightness(.50)!important}
+.single-project-experience-page .px-media-card[data-offset="4"]{z-index:10!important;transform:translate3d(13px,61px,-38px) scale(.885)!important;opacity:.22!important;filter:brightness(.44)!important}
+.single-project-experience-page .px-media-card[data-offset]:not([data-offset="0"]):not([data-offset="1"]):not([data-offset="2"]):not([data-offset="3"]):not([data-offset="4"]){
+  z-index:5!important;transform:translate3d(0,69px,-54px) scale(.86)!important;opacity:.09!important;filter:brightness(.38)!important;
+}
+.single-project-experience-page .px-media-count{
+  position:absolute!important;
+  right:0!important;
+  bottom:0!important;
+  z-index:50!important;
+  direction:ltr!important;
+  color:#777!important;
+  font:10px "Manrope",sans-serif!important;
+  letter-spacing:.12em!important;
+}
+.single-project-experience-page .px-media-count b{color:var(--project-accent)!important}
+
+/* =====================================================================
+   PRODUCTS
+   ===================================================================== */
+.single-project-experience-page .px-products-grid{
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+}
+
+.single-project-experience-page .px-products-grid-head{
+  width:min(88vw,1540px)!important;
+  margin:42px auto 8px!important;
+  height:90px!important;
+  direction:rtl!important;
+  position:relative!important;
+}
+.single-project-experience-page .px-products-grid-head .px-grid-kicker{
+  position:absolute!important;
+  top:0!important;
+  right:0!important;
+}
+.single-project-experience-page .px-products-grid-head h2{
+  position:absolute!important;
+  top:24px!important;
+  right:0!important;
+  margin:0!important;
+  color:#f4f0e8!important;
+  font-family:"Changa",sans-serif!important;
+  font-size:60px!important;
+  line-height:1!important;
+  font-weight:600!important;
+}
+
+.single-project-experience-page .px-products-grid-row{
+  width:min(88vw,1540px)!important;
+  height:56vh!important;
+  margin:0 auto!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:clamp(28px,3vw,58px)!important;
+  overflow-x:auto!important;
+  overflow-y:visible!important;
+  scrollbar-width:none!important;
+  direction:rtl!important;
+}
+.single-project-experience-page .px-products-grid-row::-webkit-scrollbar{display:none!important}
+.single-project-experience-page .px-products-grid-row.fit-three{justify-content:space-between!important}
+.single-project-experience-page .px-products-grid-row.many{justify-content:flex-start!important}
+
+.single-project-experience-page .px-product-grid-item{
+  flex:0 0 clamp(260px,23vw,370px)!important;
+  height:100%!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+
+.single-project-experience-page .px-product-grid-item .px-product-viewer{
+  width:100%!important;
+  height:calc(100% - 36px)!important;
+  display:grid!important;
+  place-items:center!important;
+  perspective:1600px!important;
+  touch-action:none!important;
+  cursor:grab!important;
+  overflow:visible!important;
+  background:transparent!important;
+  border:0!important;
+}
+.single-project-experience-page .px-product-grid-item .px-product-viewer.dragging{cursor:grabbing!important}
+.single-project-experience-page .px-product-grid-item .px-product-stage{
+  position:relative!important;
+  width:100%!important;
+  height:100%!important;
+  display:grid!important;
+  place-items:center!important;
+  perspective:1600px!important;
+}
+.single-project-experience-page .px-product-grid-item .px-product-stage::before{
+  content:""!important;
+  position:absolute!important;
+  left:50%!important;
+  bottom:7%!important;
+  width:42%!important;
+  height:5%!important;
+  transform:translateX(-50%)!important;
+  border-radius:50%!important;
+  background:rgba(0,0,0,.52)!important;
+  filter:blur(18px)!important;
+}
+.single-project-experience-page .px-product-grid-item .px-product-rotor{
+  position:relative!important;
+  width:100%!important;
+  height:100%!important;
+  transform-style:preserve-3d!important;
+}
+.single-project-experience-page .px-product-grid-item .px-product-face{
+  position:absolute!important;
+  inset:0!important;
+  display:grid!important;
+  place-items:center!important;
+  backface-visibility:hidden!important;
+  -webkit-backface-visibility:hidden!important;
+}
+.single-project-experience-page .px-product-grid-item .px-product-back{transform:rotateY(180deg)!important}
+.single-project-experience-page .px-product-grid-item .px-product-face img{
+  width:auto!important;
+  height:auto!important;
+  max-width:96%!important;
+  max-height:96%!important;
+  object-fit:contain!important;
+  filter:drop-shadow(0 24px 34px rgba(0,0,0,.48))!important;
+}
+.single-project-experience-page .px-product-grid-name{
+  height:36px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:9px!important;
+}
+.single-project-experience-page .px-product-grid-name span{
+  direction:ltr!important;
+  color:var(--project-accent)!important;
+  font:8px "Manrope",sans-serif!important;
+}
+.single-project-experience-page .px-product-grid-name b{
+  color:#d9d5ce!important;
+  font:500 10px "Noto Kufi Arabic","Changa",sans-serif!important;
+}
+
+/* ---------- mobile ---------- */
+@media(max-width:1000px){
+  .single-project-experience-page .px-layout-grid{
+    width:90vw!important;
+    height:78vh!important;
+    margin-top:58px!important;
+    grid-template-columns:1fr!important;
+    grid-template-areas:
+      "copy"
+      "visual"!important;
+    grid-template-rows:auto minmax(0,1fr)!important;
+    gap:18px!important;
+  }
+
+  .single-project-experience-page .px-layout-grid.no-media{
+    width:90vw!important;
+    grid-template-areas:"copy"!important;
+    grid-template-rows:1fr!important;
+  }
+
+  .single-project-experience-page .px-grid-copy{
+    padding:18px 20px 20px!important;
+  }
+  .single-project-experience-page .px-grid-title{
+    font-size:42px;
+    white-space:normal!important;
+  }
+  .single-project-experience-page .px-grid-body{
+    font-size:12px!important;
+    line-height:1.78!important;
+    margin-top:14px!important;
+  }
+
+  .single-project-experience-page .px-grid-visual{
+    min-height:0!important;
+  }
+
+  .single-project-experience-page .px-products-grid-head,
+  .single-project-experience-page .px-products-grid-row{
+    width:90vw!important;
+  }
+  .single-project-experience-page .px-products-grid-head h2{font-size:46px!important}
+  .single-project-experience-page .px-products-grid-row{
+    height:58vh!important;
+    justify-content:flex-start!important;
+    gap:20px!important;
+  }
+  .single-project-experience-page .px-product-grid-item{
+    flex-basis:340px!important;
+  }
+
+  .single-project-experience-page .px-project-name{
+    top:86px!important;
+    font-size:clamp(18px,4vw,26px)!important;
+  }
+  .single-project-experience-page .px-intro-mark{
+    top:108px!important;
+  }
+}
+
+@media(max-width:700px){
+  .single-project-experience-page .px-layout-grid{
+    width:92vw!important;
+    height:80svh!important;
+    margin-top:60px!important;
+  }
+
+  .single-project-experience-page .px-grid-copy{
+    padding:15px 15px 17px!important;
+  }
+  .single-project-experience-page .px-grid-title{
+    font-size:36px;
+  }
+  .single-project-experience-page .px-grid-body{
+    font-size:11.2px!important;
+    line-height:1.7!important;
+  }
+
+  .single-project-experience-page .px-products-grid-head,
+  .single-project-experience-page .px-products-grid-row{
+    width:92vw!important;
+  }
+  .single-project-experience-page .px-products-grid-head h2{font-size:38px!important}
+  .single-project-experience-page .px-products-grid-row{
+    height:60svh!important;
+  }
+  .single-project-experience-page .px-product-grid-item{
+    flex-basis:74vw!important;
+  }
+
+  .single-project-experience-page .px-project-name{
+    top:76px!important;
+    width:90vw!important;
+    font-size:17px!important;
+  }
+  .single-project-experience-page .px-intro-mark{
+    top:98px!important;
+    bottom:18px!important;
+  }
+  .single-project-experience-page .px-logo-host{
+    width:96vw!important;
+    height:44svh!important;
+    margin-top:-24px!important;
+  }
+}
+
+
+/* =========================================================
+   FINAL 2 — MORE COPY SPACE / UNIVERSAL DECK / ONE-TOUCH
+   ========================================================= */
+
+/* Logo: higher, dead center */
+.single-project-experience-page .px-project-name{
+  top:76px!important;
+}
+
+.single-project-experience-page .px-intro-mark{
+  top:88px!important;
+  bottom:72px!important;
+}
+
+.single-project-experience-page .px-logo-host{
+  width:min(86vw,1360px)!important;
+  height:min(56vh,600px)!important;
+  margin-top:-62px!important;
+}
+
+/* Give the writing the larger share of the screen.
+   Real grid guarantees media and copy can never sit on top of each other. */
+.single-project-experience-page .px-layout-grid{
+  width:min(92vw,1640px)!important;
+  grid-template-columns:minmax(300px,34%) minmax(0,61%)!important;
+  gap:5%!important;
+}
+
+.single-project-experience-page .px-grid-copy{
+  max-width:none!important;
+  padding:28px 34px 30px!important;
+}
+
+.single-project-experience-page .px-grid-title{
+  font-size:58px;
+}
+
+.single-project-experience-page .px-grid-body{
+  width:100%!important;
+  max-width:none!important;
+  font-size:15px!important;
+  line-height:1.82!important;
+  columns:auto!important;
+}
+
+/* Longer copy gets even more usable width, not smaller text. */
+.single-project-experience-page .px-grid-copy.long-copy{
+  padding-left:18px!important;
+}
+.single-project-experience-page .px-layout-grid:has(.px-grid-copy.long-copy){
+  grid-template-columns:minmax(280px,31%) minmax(0,64%)!important;
+  gap:5%!important;
+}
+
+/* Visuals remain fully contained inside their own column. */
+.single-project-experience-page .px-grid-visual{
+  max-width:100%!important;
+  min-width:0!important;
+}
+.single-project-experience-page .px-grid-image{
+  max-width:100%!important;
+}
+
+/* Every deck is visibly stacked and clickable from the entire front card. */
+.single-project-experience-page .px-media-deck{
+  width:min(100%,610px)!important;
+}
+.single-project-experience-page .px-media-card{
+  pointer-events:auto!important;
+  touch-action:manipulation!important;
+}
+.single-project-experience-page .px-media-card img{
+  pointer-events:none!important;
+  user-select:none!important;
+  -webkit-user-drag:none!important;
+}
+
+/* Products: one touch starts rotation immediately. */
+.single-project-experience-page [data-product-viewer]{
+  pointer-events:auto!important;
+  touch-action:none!important;
+  user-select:none!important;
+  -webkit-user-select:none!important;
+}
+.single-project-experience-page [data-product-viewer] .px-product-face,
+.single-project-experience-page [data-product-viewer] img{
+  pointer-events:none!important;
+  user-select:none!important;
+  -webkit-user-drag:none!important;
+}
+
+/* mobile */
+@media(max-width:1000px){
+  .single-project-experience-page .px-layout-grid,
+  .single-project-experience-page .px-layout-grid:has(.px-grid-copy.long-copy){
+    width:92vw!important;
+    grid-template-columns:1fr!important;
+    grid-template-areas:
+      "copy"
+      "visual"!important;
+    gap:16px!important;
+  }
+
+  .single-project-experience-page .px-grid-copy{
+    width:100%!important;
+    padding:17px 18px 19px!important;
+  }
+
+  .single-project-experience-page .px-grid-body{
+    font-size:12px!important;
+    line-height:1.72!important;
+  }
+
+  .single-project-experience-page .px-project-name{
+    top:70px!important;
+  }
+
+  .single-project-experience-page .px-intro-mark{
+    top:88px!important;
+    bottom:28px!important;
+  }
+
+  .single-project-experience-page .px-logo-host{
+    margin-top:-38px!important;
+  }
+}
+
+
+/* =========================================================
+   LOGO FINAL FIX — exact placement + reliable grab
+   ========================================================= */
+
+/* Project name remains above the logo. */
+.single-project-experience-page .px-project-name{
+  top:82px!important;
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  width:min(88vw,1200px)!important;
+  text-align:center!important;
+  z-index:120!important;
+}
+
+/* One dedicated, centered interaction area. */
+.single-project-experience-page .px-intro-mark{
+  position:absolute!important;
+  z-index:110!important;
+  left:50%!important;
+  top:47%!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:min(92vw,1500px)!important;
+  height:min(62vh,660px)!important;
+  transform:translate(-50%,-50%)!important;
+  display:grid!important;
+  place-items:center!important;
+  pointer-events:auto!important;
+  touch-action:none!important;
+  user-select:none!important;
+  -webkit-user-select:none!important;
+  cursor:grab!important;
+}
+
+.single-project-experience-page .px-intro-mark.dragging{
+  cursor:grabbing!important;
+}
+
+/* Logo itself sits exactly in the center of the interaction area. */
+.single-project-experience-page .px-logo-host{
+  position:relative!important;
+  width:min(84vw,1320px)!important;
+  height:min(54vh,585px)!important;
+  margin:0!important;
+  transform:scale(var(--hero-logo-scale))!important;
+  transform-origin:center center!important;
+  pointer-events:none!important;
+  perspective:1600px!important;
+}
+
+.single-project-experience-page .project-logo-rotor{
+  width:100%!important;
+  height:100%!important;
+  transform-style:preserve-3d!important;
+  will-change:transform!important;
+}
+
+.single-project-experience-page .project-logo-face,
+.single-project-experience-page .project-logo-face img{
+  pointer-events:none!important;
+  user-select:none!important;
+  -webkit-user-drag:none!important;
+}
+
+.single-project-experience-page .project-logo-face img{
+  width:auto!important;
+  height:auto!important;
+  max-width:96%!important;
+  max-height:96%!important;
+  object-fit:contain!important;
+}
+
+@media(max-width:1000px){
+  .single-project-experience-page .px-project-name{
+    top:76px!important;
+  }
+
+  .single-project-experience-page .px-intro-mark{
+    top:46%!important;
+    width:94vw!important;
+    height:56vh!important;
+  }
+
+  .single-project-experience-page .px-logo-host{
+    width:92vw!important;
+    height:48vh!important;
+  }
+}
+
+@media(max-width:700px){
+  .single-project-experience-page .px-project-name{
+    top:70px!important;
+    font-size:17px!important;
+  }
+
+  .single-project-experience-page .px-intro-mark{
+    top:45%!important;
+    width:96vw!important;
+    height:52svh!important;
+  }
+
+  .single-project-experience-page .px-logo-host{
+    width:94vw!important;
+    height:44svh!important;
+  }
+}
+
+
+/* =========================================================
+   LOGO = PRODUCT MECHANISM
+   نفس سحب المنتجات: أول لمسة + سحب أفقي + Inertia + Snap
+   ========================================================= */
+.single-project-experience-page .px-intro-mark{
+  pointer-events:auto!important;
+  touch-action:none!important;
+  user-select:none!important;
+  -webkit-user-select:none!important;
+  cursor:grab!important;
+}
+.single-project-experience-page .px-intro-mark.dragging{
+  cursor:grabbing!important;
+}
+.single-project-experience-page .px-logo-host,
+.single-project-experience-page .project-logo-face,
+.single-project-experience-page .project-logo-face img{
+  pointer-events:none!important;
+}
+.single-project-experience-page .project-logo-rotor{
+  transform-style:preserve-3d!important;
+  will-change:transform!important;
+}
+.single-project-experience-page .project-logo-face.front{
+  transform:rotateY(0deg)!important;
+}
+.single-project-experience-page .project-logo-face.back{
+  transform:rotateY(180deg)!important;
+}
+
+
+/* =========================================================
+   FINAL — LOGO HIT AREA + AUTO SECTION RATIO
+   ========================================================= */
+
+/* Entire logo rectangle is the drag surface. */
+.single-project-experience-page .px-intro-mark{
+  pointer-events:none!important;
+}
+
+.single-project-experience-page .px-logo-host{
+  --logo-aspect:16/9;
+  position:relative!important;
+  width:min(82vw,1280px)!important;
+  height:auto!important;
+  aspect-ratio:var(--logo-aspect)!important;
+  max-height:54vh!important;
+  margin:0!important;
+  pointer-events:auto!important;
+  touch-action:none!important;
+  user-select:none!important;
+  -webkit-user-select:none!important;
+  cursor:grab!important;
+  transform:scale(var(--hero-logo-scale))!important;
+  transform-origin:center!important;
+  perspective:1600px!important;
+}
+.single-project-experience-page .px-logo-host.dragging{cursor:grabbing!important}
+
+.single-project-experience-page .project-logo-face,
+.single-project-experience-page .project-logo-face img{
+  pointer-events:none!important;
+  user-select:none!important;
+  -webkit-user-drag:none!important;
+}
+
+/* Automatic text/media balance based on selected image ratio. */
+.single-project-experience-page .px-layout-grid.ratio-wide{
+  grid-template-columns:minmax(420px,46%) minmax(0,49%)!important;
+  gap:5%!important;
+}
+.single-project-experience-page .px-layout-grid.ratio-landscape{
+  grid-template-columns:minmax(340px,39%) minmax(0,56%)!important;
+  gap:5%!important;
+}
+.single-project-experience-page .px-layout-grid.ratio-square{
+  grid-template-columns:minmax(330px,37%) minmax(0,58%)!important;
+  gap:5%!important;
+}
+.single-project-experience-page .px-layout-grid.ratio-portrait{
+  grid-template-columns:minmax(270px,30%) minmax(0,65%)!important;
+  gap:5%!important;
+}
+.single-project-experience-page .px-layout-grid.ratio-fill{
+  grid-template-columns:minmax(400px,43%) minmax(0,52%)!important;
+  gap:5%!important;
+}
+
+.single-project-experience-page .px-grid-visual,
+.single-project-experience-page .px-grid-copy{
+  min-width:0!important;
+  width:100%!important;
+}
+.single-project-experience-page .px-grid-image,
+.single-project-experience-page .px-media-deck{
+  max-width:100%!important;
+}
+
+/* On wide landscape, preserve the landscape feel. */
+.single-project-experience-page .px-layout-grid.ratio-wide .px-grid-image.ratio-wide{
+  width:100%!important;
+  max-width:780px!important;
+}
+
+/* On portrait, give the text more room and keep the image slim. */
+.single-project-experience-page .px-layout-grid.ratio-portrait .px-grid-image.ratio-portrait{
+  width:min(100%,470px)!important;
+  justify-self:center!important;
+}
+
+/* Mobile: selected ratio controls image shape; text stays readable. */
+@media(max-width:1000px){
+  .single-project-experience-page .px-layout-grid.ratio-wide,
+  .single-project-experience-page .px-layout-grid.ratio-landscape,
+  .single-project-experience-page .px-layout-grid.ratio-square,
+  .single-project-experience-page .px-layout-grid.ratio-portrait,
+  .single-project-experience-page .px-layout-grid.ratio-fill{
+    grid-template-columns:1fr!important;
+    grid-template-areas:
+      "copy"
+      "visual"!important;
+    gap:16px!important;
+  }
+
+  .single-project-experience-page .px-logo-host{
+    width:min(92vw,1100px)!important;
+    max-height:47vh!important;
+  }
+}
+
+@media(max-width:700px){
+  .single-project-experience-page .px-logo-host{
+    width:94vw!important;
+    max-height:43svh!important;
+  }
+}
+
+
+/* =========================================================
+   FINAL — AMUR LOGO MECHANISM + AUTO IMAGE/TEXT COMPOSITION
+   ========================================================= */
+
+/* Logo interaction zone: whole visible logo scene is draggable */
+.single-project-experience-page .px-intro-mark{
+  pointer-events:auto!important;
+  touch-action:none!important;
+  user-select:none!important;
+  -webkit-user-select:none!important;
+  cursor:grab!important;
+}
+.single-project-experience-page .px-intro-mark.dragging{
+  cursor:grabbing!important;
+}
+
+.single-project-experience-page .px-logo-host{
+  pointer-events:none!important;
+  margin:0!important;
+  width:min(84vw,1320px)!important;
+  height:min(54vh,585px)!important;
+  transform:scale(var(--hero-logo-scale))!important;
+  transform-origin:center center!important;
+  perspective:1600px!important;
+}
+
+.single-project-experience-page .project-logo-rotor{
+  transform-style:preserve-3d!important;
+  will-change:transform!important;
+}
+
+.single-project-experience-page .project-logo-face.front{
+  transform:rotateY(0deg)!important;
+}
+.single-project-experience-page .project-logo-face.back{
+  transform:rotateY(180deg)!important;
+}
+
+/* ---------------------------------------------------------
+   AUTO SECTION LAYOUT BY SELECTED IMAGE RATIO
+   --------------------------------------------------------- */
+
+/* 16:9 — image gets more horizontal room */
+.single-project-experience-page .px-layout-grid.ratio-wide{
+  grid-template-columns:minmax(470px,48%) minmax(0,47%)!important;
+  gap:5%!important;
+}
+
+/* 4:3 — balanced */
+.single-project-experience-page .px-layout-grid.ratio-landscape{
+  grid-template-columns:minmax(390px,41%) minmax(0,54%)!important;
+  gap:5%!important;
+}
+
+/* square — slightly more room to copy */
+.single-project-experience-page .px-layout-grid.ratio-square{
+  grid-template-columns:minmax(340px,36%) minmax(0,59%)!important;
+  gap:5%!important;
+}
+
+/* 4:5 portrait — narrow image, wide copy */
+.single-project-experience-page .px-layout-grid.ratio-portrait{
+  grid-template-columns:minmax(280px,30%) minmax(0,65%)!important;
+  gap:5%!important;
+}
+
+/* fill — image gets strong presence but copy stays readable */
+.single-project-experience-page .px-layout-grid.ratio-fill{
+  grid-template-columns:minmax(430px,45%) minmax(0,50%)!important;
+  gap:5%!important;
+}
+
+/* Text always uses the full width of its column */
+.single-project-experience-page .px-grid-copy{
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+}
+
+.single-project-experience-page .px-grid-body{
+  width:100%!important;
+  max-width:none!important;
+  overflow:visible!important;
+  text-wrap:pretty!important;
+}
+
+/* Image always stays inside its own zone */
+.single-project-experience-page .px-grid-visual{
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+}
+
+.single-project-experience-page .px-grid-image,
+.single-project-experience-page .px-media-deck{
+  max-width:100%!important;
+}
+
+/* Maintain the chosen aspect ratio visually */
+.single-project-experience-page .px-grid-image.ratio-wide{
+  width:100%!important;
+  aspect-ratio:16/9!important;
+}
+.single-project-experience-page .px-grid-image.ratio-landscape{
+  width:100%!important;
+  aspect-ratio:4/3!important;
+}
+.single-project-experience-page .px-grid-image.ratio-square{
+  width:min(100%,560px)!important;
+  aspect-ratio:1/1!important;
+}
+.single-project-experience-page .px-grid-image.ratio-portrait{
+  width:min(100%,470px)!important;
+  aspect-ratio:4/5!important;
+  justify-self:center!important;
+}
+.single-project-experience-page .px-grid-image.ratio-fill{
+  width:100%!important;
+  height:100%!important;
+}
+
+/* Mobile: copy first, image second; selected ratio only changes image shape */
+@media(max-width:1000px){
+  .single-project-experience-page .px-layout-grid.ratio-wide,
+  .single-project-experience-page .px-layout-grid.ratio-landscape,
+  .single-project-experience-page .px-layout-grid.ratio-square,
+  .single-project-experience-page .px-layout-grid.ratio-portrait,
+  .single-project-experience-page .px-layout-grid.ratio-fill{
+    grid-template-columns:1fr!important;
+    grid-template-areas:
+      "copy"
+      "visual"!important;
+    gap:16px!important;
+  }
+}
+
+
+/* =========================================================
+   FINAL CORRECTION — FULL LOGO GRAB + TRUE AUTO IMAGE SIZE
+   ========================================================= */
+
+/* Full transparent interaction layer covering EVERY side of the logo box */
+.single-project-experience-page .px-logo-host{
+  position:relative!important;
+  pointer-events:none!important;
+}
+
+.single-project-experience-page .px-logo-grab-layer{
+  position:absolute!important;
+  z-index:999!important;
+  inset:0!important;
+  display:block!important;
+  pointer-events:auto!important;
+  touch-action:none!important;
+  user-select:none!important;
+  -webkit-user-select:none!important;
+  cursor:grab!important;
+  background:transparent!important;
+}
+
+.single-project-experience-page .px-logo-grab-layer.dragging{
+  cursor:grabbing!important;
+}
+
+/* The parent zone no longer decides which side receives the mouse */
+.single-project-experience-page .px-intro-mark{
+  pointer-events:auto!important;
+}
+
+/* ---------------- TRUE AUTO IMAGE COMPOSITION ---------------- */
+
+/* 16:9 / very wide */
+.single-project-experience-page .px-layout-grid.ratio-wide{
+  grid-template-columns:minmax(470px,48%) minmax(0,47%)!important;
+  gap:5%!important;
+}
+
+/* ordinary landscape */
+.single-project-experience-page .px-layout-grid.ratio-landscape{
+  grid-template-columns:minmax(390px,41%) minmax(0,54%)!important;
+  gap:5%!important;
+}
+
+/* square */
+.single-project-experience-page .px-layout-grid.ratio-square{
+  grid-template-columns:minmax(340px,36%) minmax(0,59%)!important;
+  gap:5%!important;
+}
+
+/* portrait */
+.single-project-experience-page .px-layout-grid.ratio-portrait{
+  grid-template-columns:minmax(275px,30%) minmax(0,65%)!important;
+  gap:5%!important;
+}
+
+.single-project-experience-page .px-grid-image.ratio-wide{
+  width:100%!important;
+  aspect-ratio:16/9!important;
+}
+.single-project-experience-page .px-grid-image.ratio-landscape{
+  width:100%!important;
+  aspect-ratio:4/3!important;
+}
+.single-project-experience-page .px-grid-image.ratio-square{
+  width:min(100%,560px)!important;
+  aspect-ratio:1/1!important;
+}
+.single-project-experience-page .px-grid-image.ratio-portrait{
+  width:min(100%,470px)!important;
+  aspect-ratio:4/5!important;
+  justify-self:center!important;
+}
+
+/* Respect the uploaded image; no forced crop */
+.single-project-experience-page .px-grid-image img{
+  object-fit:contain!important;
+  width:100%!important;
+  height:100%!important;
+}
+
+/* Multi-image stack also follows the currently visible image dimensions */
+.single-project-experience-page .px-layout-grid.ratio-wide .px-media-deck{
+  width:100%!important;
+  max-width:760px!important;
+}
+.single-project-experience-page .px-layout-grid.ratio-landscape .px-media-deck{
+  width:100%!important;
+  max-width:660px!important;
+}
+.single-project-experience-page .px-layout-grid.ratio-square .px-media-deck{
+  width:min(100%,590px)!important;
+}
+.single-project-experience-page .px-layout-grid.ratio-portrait .px-media-deck{
+  width:min(100%,500px)!important;
+}
+
+/* Mobile: natural ratio controls image shape while text stacks safely above it */
+@media(max-width:1000px){
+  .single-project-experience-page .px-layout-grid.ratio-wide,
+  .single-project-experience-page .px-layout-grid.ratio-landscape,
+  .single-project-experience-page .px-layout-grid.ratio-square,
+  .single-project-experience-page .px-layout-grid.ratio-portrait{
+    grid-template-columns:1fr!important;
+    grid-template-areas:
+      "copy"
+      "visual"!important;
+    gap:16px!important;
+  }
+}
+
+
+/* Product section editable heading/description */
+.single-project-experience-page .px-products-grid-head{
+  width:min(92vw,1640px)!important;
+  margin-inline:auto!important;
+}
+.single-project-experience-page .px-products-grid-description{
+  margin-top:14px;
+  max-width:920px;
+  font-size:15px;
+  line-height:1.9;
+  opacity:.76;
+  text-wrap:pretty;
+}
+@media(max-width:700px){
+  .single-project-experience-page .px-products-grid-description{
+    font-size:14px;
+    line-height:1.8;
+  }
+}
+
+
+/* =========================================================
+   PRODUCTS HEADING ORDER FIX
+   kicker -> title -> description
+   ========================================================= */
+.single-project-experience-page .px-products-grid-head{
+  position:relative!important;
+  height:158px!important;
+}
+
+.single-project-experience-page .px-products-grid-head .px-grid-kicker{
+  position:absolute!important;
+  top:0!important;
+  right:0!important;
+}
+
+.single-project-experience-page .px-products-grid-head h2{
+  position:absolute!important;
+  top:24px!important;
+  right:0!important;
+  margin:0!important;
+}
+
+.single-project-experience-page .px-products-grid-description{
+  position:absolute!important;
+  top:94px!important;
+  right:0!important;
+  margin:0!important;
+  width:min(100%,920px)!important;
+  max-width:920px!important;
+  font-size:15px!important;
+  line-height:1.9!important;
+  opacity:.76!important;
+}
+
+@media(max-width:700px){
+  .single-project-experience-page .px-products-grid-head{
+    height:140px!important;
+  }
+
+  .single-project-experience-page .px-products-grid-head h2{
+    top:22px!important;
+  }
+
+  .single-project-experience-page .px-products-grid-description{
+    top:76px!important;
+    font-size:14px!important;
+    line-height:1.8!important;
+  }
+}
+
+
+/* =========================================================
+   LOGO ONLY — keep image/deck motion untouched
+   ========================================================= */
+.single-project-experience-page .px-step-intro,
+.single-project-experience-page .px-intro-mark,
+.single-project-experience-page .px-logo-host{
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+
+.single-project-experience-page .px-project-name{
+  top:92px!important;
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  z-index:120!important;
+}
+
+.single-project-experience-page .px-intro-mark{
+  position:absolute!important;
+  left:0!important;
+  right:0!important;
+  top:118px!important;
+  bottom:44px!important;
+  width:100%!important;
+  transform:none!important;
+  display:grid!important;
+  place-items:center!important;
+  overflow:visible!important;
+}
+
+.single-project-experience-page .px-logo-host{
+  position:relative!important;
+  width:min(90vw,1480px)!important;
+  height:min(64vh,690px)!important;
+  margin:0 auto!important;
+  transform:scale(var(--hero-logo-scale))!important;
+  transform-origin:center!important;
+  perspective:1700px!important;
+  pointer-events:none!important;
+}
+
+.single-project-experience-page .px-logo-grab-layer{
+  position:absolute!important;
+  inset:0!important;
+  z-index:999!important;
+  pointer-events:auto!important;
+  touch-action:none!important;
+  user-select:none!important;
+  -webkit-user-select:none!important;
+  cursor:grab!important;
+  background:transparent!important;
+}
+
+.single-project-experience-page .px-logo-grab-layer.dragging{
+  cursor:grabbing!important;
+}
+
+.single-project-experience-page .project-logo-rotor{
+  width:100%!important;
+  height:100%!important;
+  transform-style:preserve-3d!important;
+  will-change:transform!important;
+  transition:none!important;
+}
+
+.single-project-experience-page .project-logo-face{
+  position:absolute!important;
+  inset:0!important;
+  display:grid!important;
+  place-items:center!important;
+  pointer-events:none!important;
+}
+
+.single-project-experience-page .project-logo-face img{
+  width:auto!important;
+  height:auto!important;
+  max-width:96%!important;
+  max-height:96%!important;
+  object-fit:contain!important;
+  pointer-events:none!important;
+  user-select:none!important;
+  -webkit-user-drag:none!important;
+}
+
+@media(max-width:1000px){
+  .single-project-experience-page .px-project-name{top:82px!important}
+  .single-project-experience-page .px-intro-mark{
+    top:108px!important;
+    bottom:34px!important;
+    transform:none!important;
+  }
+  .single-project-experience-page .px-logo-host{
+    width:92vw!important;
+    height:58vh!important;
+  }
+}
+
+@media(max-width:700px){
+  .single-project-experience-page .px-project-name{top:76px!important}
+  .single-project-experience-page .px-intro-mark{
+    top:102px!important;
+    bottom:24px!important;
+  }
+  .single-project-experience-page .px-logo-host{
+    width:94vw!important;
+    height:52svh!important;
+  }
+}
+
+
+/* =========================================================
+   HERO LOGO — TRUE CENTER
+   ========================================================= */
+.single-project-experience-page .px-intro-mark{
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:100vw!important;
+  height:calc(100vh - 150px)!important;
+  transform:translate(-50%,-44%)!important;
+  margin:0!important;
+
+  display:grid!important;
+  place-items:center!important;
+  justify-items:center!important;
+  align-items:center!important;
+}
+
+.single-project-experience-page .px-logo-host{
+  position:relative!important;
+  left:auto!important;
+  right:auto!important;
+  top:auto!important;
+  bottom:auto!important;
+  margin:0 auto!important;
+
+  width:min(88vw,1420px)!important;
+  height:min(62vh,660px)!important;
+
+  transform:scale(var(--hero-logo-scale))!important;
+  transform-origin:center center!important;
+}
+
+.single-project-experience-page .project-logo-rotor,
+.single-project-experience-page .project-logo-face{
+  width:100%!important;
+  height:100%!important;
+}
+
+.single-project-experience-page .project-logo-face{
+  display:grid!important;
+  place-items:center!important;
+}
+
+.single-project-experience-page .project-logo-face img{
+  display:block!important;
+  margin:auto!important;
+  max-width:96%!important;
+  max-height:96%!important;
+  object-fit:contain!important;
+}
+
+/* Keep title centered independently above the logo */
+.single-project-experience-page .px-project-name{
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%)!important;
+  text-align:center!important;
+}
+
+@media(max-width:1000px){
+  .single-project-experience-page .px-intro-mark{
+    width:100vw!important;
+    height:calc(100svh - 135px)!important;
+    transform:translate(-50%,-43%)!important;
+  }
+
+  .single-project-experience-page .px-logo-host{
+    width:92vw!important;
+    height:58svh!important;
+  }
+}
+
+@media(max-width:700px){
+  .single-project-experience-page .px-intro-mark{
+    transform:translate(-50%,-42%)!important;
+  }
+
+  .single-project-experience-page .px-logo-host{
+    width:94vw!important;
+    height:52svh!important;
+  }
+}
+
+/* V32 — project page bilingual/mobile polish */
+.px-nav-meta{display:flex;align-items:center;justify-content:flex-end;gap:12px}
+body.lang-en .px-grid-copy,body.lang-en .px-exit{direction:ltr;text-align:left}
+body.lang-ar .px-grid-copy,body.lang-ar .px-exit{direction:rtl;text-align:right}
+.px-grid-copy h2,.px-grid-copy p{unicode-bidi:plaintext}
+
+@media(max-width:760px){
+  .single-project-experience-page .site-header{padding:11px 0!important}
+  .single-project-experience-page .nav{grid-template-columns:auto 1fr auto!important;gap:8px!important}
+  .project-back{justify-self:center;font-size:9px!important;white-space:nowrap}
+  .px-nav-meta .nav-caption{display:none!important}
+  .px-nav-meta{gap:0}
+  .px-shell{width:100%!important;padding-inline:13px!important}
+  .px-topline{top:84px!important;font-size:7px!important}
+  .px-progress{top:108px!important}
+  .px-stage{padding-top:112px!important;padding-bottom:46px!important}
+  .px-hint{bottom:12px!important;font-size:7px!important}
+  .px-grid{grid-template-columns:1fr!important;gap:16px!important;align-items:center!important}
+  .px-grid-copy{max-width:none!important;padding:0 4px!important}
+  .px-grid-copy h2{font-size:clamp(30px,9vw,45px)!important;line-height:1.18!important}
+  .px-grid-copy p{font-size:11px!important;line-height:1.8!important}
+  .px-media{min-height:250px!important;max-height:42svh!important}
+  .px-media img{max-height:42svh!important;object-fit:contain!important}
+  .px-media-deck{min-height:270px!important}
+  .px-logo-host{width:94vw!important;height:min(48svh,430px)!important}
+  .px-logo-host .project-logo-drag{width:100%!important;height:100%!important}
+  .px-exit{min-height:74svh!important;padding:100px 0 50px!important}
+  .px-exit h2{font-size:clamp(42px,12vw,64px)!important;line-height:1.05!important}
+  .single-project-experience-page .mouse-field{display:none!important}
+}
+
+
+/* V34 public project typography harmony */
+body{font-family:"Inter Tight","IBM Plex Sans Arabic","Manrope","Noto Kufi Arabic",sans-serif}
+html[dir="rtl"] body{font-family:"IBM Plex Sans Arabic","Noto Kufi Arabic",sans-serif}
+.px-copy h2,.px-section-head h2,.ep-hero h1{font-weight:500!important;letter-spacing:-.025em!important}
+html[dir="ltr"] .px-copy h2,html[dir="ltr"] .px-section-head h2,html[dir="ltr"] .ep-hero h1{font-family:"Inter Tight","Manrope",sans-serif!important;font-weight:400!important;letter-spacing:-.045em!important}
+html[dir="rtl"] .px-copy h2,html[dir="rtl"] .px-section-head h2,html[dir="rtl"] .ep-hero h1{font-family:"IBM Plex Sans Arabic","Noto Kufi Arabic",sans-serif!important;font-weight:500!important}
