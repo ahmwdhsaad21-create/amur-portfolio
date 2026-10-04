@@ -1,0 +1,299 @@
+/* AMUR V47 — final mobile composition polish
+   Mobile only. Desktop >= 761px is untouched. */
+@media (max-width:760px){
+  :root{--v47-pad:14px;--v47-gap:12px;--v47-line:rgba(255,255,255,.105);--v47-card:rgba(255,255,255,.018)}
+
+  /* HOME / WORK: true full-width stacked project cards */
+  .scene-work{padding-inline:0!important}
+  .scene-work>.work-scene,
+  .scene-work .work-scene{
+    width:calc(100vw - 20px)!important;
+    max-width:none!important;
+    margin-inline:auto!important;
+    padding-inline:14px!important;
+    box-sizing:border-box!important;
+  }
+  .scene-work .work-list{
+    display:block!important;
+    width:100%!important;
+    max-width:none!important;
+    min-width:0!important;
+    height:auto!important;
+    max-height:none!important;
+    overflow:visible!important;
+    margin:0!important;
+    padding:0!important;
+  }
+  .scene-work .work-horizontal-track{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    gap:10px!important;
+    width:100%!important;
+    min-width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+    padding:0!important;
+    transform:none!important;
+  }
+  .scene-work .work-logo-scene,
+  .scene-work .work-logo-scene.is-active,
+  .scene-work .work-logo-scene:not(.is-active),
+  .scene-work .work-logo-scene:nth-child(n){
+    display:block!important;
+    flex:0 0 auto!important;
+    width:100%!important;
+    min-width:100%!important;
+    max-width:100%!important;
+    height:210px!important;
+    min-height:210px!important;
+    max-height:210px!important;
+    margin:0!important;
+    transform:none!important;
+    opacity:1!important;
+    filter:none!important;
+    border-radius:16px!important;
+    overflow:hidden!important;
+    box-sizing:border-box!important;
+  }
+  .scene-work .work-logo-center{padding:31px 18px 57px!important}
+  .scene-work .work-logo-center .project-logo-drag{
+    width:min(62%,250px)!important;
+    height:92px!important;
+    max-height:92px!important;
+    pointer-events:none!important;
+  }
+  .scene-work .work-logo-bottom{left:12px!important;right:12px!important;bottom:10px!important}
+  .scene-work .work-logo-bottom h3{font-size:16.5px!important;line-height:1.02!important;max-width:92%!important}
+  .scene-work .work-logo-bottom p{font-size:7.5px!important;line-height:1.35!important;max-width:94%!important;margin-top:4px!important}
+  .scene-work .work-horizontal-progress{display:none!important}
+
+  /* Make the scroll transition visible but calm. */
+  .scene.v47-scroll-scene,.contact.v47-scroll-scene{
+    transform:translate3d(0,var(--v47-y,0),0) scale(var(--v47-scale,1))!important;
+    opacity:var(--v47-opacity,1)!important;
+    transform-origin:50% 38%!important;
+    will-change:transform,opacity!important;
+  }
+  .scene-work .work-logo-scene.v47-card-motion{
+    transform:translate3d(0,var(--v47-card-y,0),0) scale(var(--v47-card-scale,1))!important;
+    opacity:var(--v47-card-opacity,1)!important;
+    will-change:transform,opacity!important;
+  }
+
+  /* About portrait: clearly visible subtle scroll motion. */
+  #aboutPortrait.v47-portrait{
+    transform:translate3d(0,var(--v47-portrait-y,0),0) scale(var(--v47-portrait-scale,1)) rotate(var(--v47-portrait-rotate,0deg))!important;
+    opacity:var(--v47-portrait-opacity,1)!important;
+    will-change:transform,opacity!important;
+  }
+
+  /* PROJECT PAGE: keep case-study scene feeling, but make content readable and complete. */
+  .single-project-experience-page .px-experience{
+    height:auto!important;
+    min-height:0!important;
+    padding:58px 0 8px!important;
+  }
+  .single-project-experience-page .px-sticky{
+    position:relative!important;
+    top:auto!important;
+    height:auto!important;
+    min-height:0!important;
+    overflow:visible!important;
+  }
+  .single-project-experience-page .px-shell{
+    width:calc(100vw - 20px)!important;
+    max-width:none!important;
+    padding:0!important;
+    margin:0 auto!important;
+  }
+  .single-project-experience-page .px-stage{
+    position:relative!important;
+    inset:auto!important;
+    display:flex!important;
+    flex-direction:column!important;
+    gap:10px!important;
+    height:auto!important;
+    min-height:0!important;
+    padding:48px 0 10px!important;
+    overflow:visible!important;
+  }
+  .single-project-experience-page .px-step,
+  .single-project-experience-page .px-step.active{
+    position:relative!important;
+    inset:auto!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:16px!important;
+    box-sizing:border-box!important;
+    opacity:1!important;
+    filter:none!important;
+    pointer-events:auto!important;
+    overflow:visible!important;
+    border:1px solid var(--v47-line)!important;
+    border-radius:18px!important;
+    background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008))!important;
+    box-shadow:0 18px 44px rgba(0,0,0,.18)!important;
+  }
+  .single-project-experience-page .px-step.v47-project-step{
+    transform:translate3d(0,var(--v47-step-y,0),0) scale(var(--v47-step-scale,1))!important;
+    opacity:var(--v47-step-opacity,1)!important;
+    transform-origin:50% 24%!important;
+    will-change:transform,opacity!important;
+  }
+  .single-project-experience-page .px-layout-grid,
+  .single-project-experience-page .px-layout-grid:has(.px-grid-copy.long-copy),
+  .single-project-experience-page .px-layout-grid.has-media,
+  .single-project-experience-page .px-layout-grid.no-media{
+    display:flex!important;
+    flex-direction:column!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:0!important;
+    gap:13px!important;
+    overflow:visible!important;
+    direction:inherit!important;
+  }
+  /* Text first on mobile; media follows it as one composition. */
+  .single-project-experience-page .px-grid-copy{
+    order:1!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    overflow:visible!important;
+    padding:0!important;
+    margin:0!important;
+    border:0!important;
+    border-radius:0!important;
+    background:none!important;
+    box-sizing:border-box!important;
+    text-align:left!important;
+  }
+  .single-project-experience-page.lang-ar .px-grid-copy{text-align:right!important}
+  .single-project-experience-page .px-grid-kicker{position:static!important;height:auto!important;margin:0 0 8px!important;font-size:7px!important;gap:7px!important}
+  .single-project-experience-page .px-grid-title{
+    font-size:clamp(27px,8.4vw,38px)!important;
+    line-height:1.06!important;
+    margin:0 0 10px!important;
+    max-width:100%!important;
+    overflow:visible!important;
+  }
+  .single-project-experience-page .px-grid-body{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    max-height:none!important;
+    overflow:visible!important;
+    font-size:12px!important;
+    line-height:1.62!important;
+    opacity:.82!important;
+    white-space:normal!important;
+    text-overflow:clip!important;
+  }
+  .single-project-experience-page .px-grid-visual{
+    order:2!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    padding:0!important;
+    margin:0!important;
+    overflow:visible!important;
+  }
+  .single-project-experience-page .px-grid-image,
+  .single-project-experience-page .px-media-deck{
+    width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+    border-radius:14px!important;
+    overflow:hidden!important;
+    border:1px solid rgba(255,255,255,.075)!important;
+    background:rgba(255,255,255,.012)!important;
+  }
+  .single-project-experience-page .px-grid-image img{
+    width:100%!important;
+    height:auto!important;
+    max-height:66svh!important;
+    object-fit:contain!important;
+    display:block!important;
+  }
+  .single-project-experience-page .px-media-deck{height:min(72vw,360px)!important;min-height:250px!important;max-height:360px!important}
+  .single-project-experience-page .px-media-card{inset:0!important}
+  .single-project-experience-page .px-media-card img{object-fit:contain!important;border-radius:14px!important}
+
+  /* intro remains a scene, but compact and scroll-safe */
+  .single-project-experience-page .px-step-intro{min-height:74svh!important;display:grid!important;place-items:center!important;padding-top:54px!important;padding-bottom:34px!important}
+  .single-project-experience-page .px-project-name{position:absolute!important;top:14px!important;left:14px!important;right:14px!important;font-size:22px!important;line-height:1.05!important;white-space:normal!important}
+  .single-project-experience-page .px-intro-mark{position:relative!important;inset:auto!important;width:100%!important;height:52svh!important;min-height:310px!important;transform:none!important;display:grid!important;place-items:center!important;overflow:hidden!important}
+  .single-project-experience-page .px-logo-host{width:82%!important;height:44svh!important;max-height:360px!important;pointer-events:none!important;touch-action:pan-y!important}
+  .single-project-experience-page .px-logo-grab-layer{display:none!important}
+
+  /* Products: full-width section, all products visible, shirts rotate automatically. */
+  .single-project-experience-page .px-products-grid{display:block!important;overflow:visible!important}
+  .single-project-experience-page .px-products-grid-head{position:static!important;width:100%!important;height:auto!important;margin:0 0 13px!important;overflow:visible!important}
+  .single-project-experience-page .px-products-grid-head h2{position:static!important;font-size:31px!important;line-height:1.05!important;margin:2px 0 8px!important}
+  .single-project-experience-page .px-products-grid-description{position:static!important;width:100%!important;max-width:100%!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;font-size:11px!important;line-height:1.55!important}
+  .single-project-experience-page .px-products-grid-row{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+    width:100%!important;
+    height:auto!important;
+    overflow:visible!important;
+    padding:0!important;
+    margin:0!important;
+  }
+  .single-project-experience-page .px-product-grid-item{
+    width:100%!important;
+    min-width:0!important;
+    height:auto!important;
+    padding:9px!important;
+    border:1px solid rgba(255,255,255,.08)!important;
+    border-radius:15px!important;
+    background:rgba(255,255,255,.012)!important;
+  }
+  .single-project-experience-page .px-product-grid-item .px-product-viewer{
+    width:100%!important;
+    height:min(78vw,390px)!important;
+    min-height:270px!important;
+    max-height:390px!important;
+    pointer-events:none!important;
+    touch-action:pan-y!important;
+    perspective:1000px!important;
+  }
+  .single-project-experience-page .px-product-stage{height:100%!important;display:grid!important;place-items:center!important;overflow:visible!important}
+  .single-project-experience-page .px-product-rotor{
+    display:grid!important;
+    place-items:center!important;
+    transform-style:preserve-3d!important;
+    will-change:transform!important;
+  }
+  .single-project-experience-page .px-product-face{backface-visibility:hidden!important;-webkit-backface-visibility:hidden!important}
+  .single-project-experience-page .px-product-back{display:grid!important;transform:rotateY(180deg)!important}
+  .single-project-experience-page .px-product-grid-name{font-size:8px!important;margin-top:7px!important;text-align:center!important}
+
+  .single-project-experience-page .px-topline{top:56px!important;padding-inline:3px!important;font-size:6px!important;white-space:normal!important;line-height:1.25!important}
+  .single-project-experience-page .px-progress,.single-project-experience-page .px-hint{display:none!important}
+}
+
+@media(max-width:390px){
+  .scene-work .work-logo-scene,
+  .scene-work .work-logo-scene.is-active,
+  .scene-work .work-logo-scene:not(.is-active),
+  .scene-work .work-logo-scene:nth-child(n){height:198px!important;min-height:198px!important;max-height:198px!important}
+  .single-project-experience-page .px-step{padding:14px!important}
+  .single-project-experience-page .px-grid-body{font-size:11.4px!important}
+}
+
+@media(max-width:760px) and (prefers-reduced-motion:reduce){
+  .scene.v47-scroll-scene,.contact.v47-scroll-scene,.scene-work .work-logo-scene.v47-card-motion,#aboutPortrait.v47-portrait,.single-project-experience-page .px-step.v47-project-step{transform:none!important;opacity:1!important;will-change:auto!important}
+}

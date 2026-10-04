@@ -1,0 +1,286 @@
+/* AMUR V48 — PROJECT PAGE MOBILE FINAL
+   Scope: project page mobile only. Desktop stays untouched. */
+@media (max-width:760px){
+  .single-project-experience-page{overflow-x:hidden!important}
+
+  /* Header / chrome: compact but readable */
+  .single-project-experience-page .site-header{padding:6px 0!important}
+  .single-project-experience-page .site-header .nav{
+    width:calc(100% - 20px)!important;
+    min-height:44px!important;
+    display:grid!important;
+    grid-template-columns:auto 1fr auto!important;
+    align-items:center!important;
+    gap:8px!important;
+  }
+  .single-project-experience-page .brand{font-size:14px!important;letter-spacing:.16em!important}
+  .single-project-experience-page .project-back{justify-self:center!important;font-size:8px!important;white-space:nowrap!important}
+  .single-project-experience-page .lang-toggle{min-width:38px!important;height:30px!important;font-size:8px!important}
+  .single-project-experience-page .px-nav-meta .nav-caption{display:none!important}
+
+  /* Stage chrome */
+  .single-project-experience-page .px-shell{padding-inline:0!important}
+  .single-project-experience-page .px-topline{
+    top:54px!important;
+    width:calc(100% - 28px)!important;
+    left:14px!important;
+    right:14px!important;
+    font-size:6.5px!important;
+    line-height:1.25!important;
+  }
+  .single-project-experience-page .px-progress{top:74px!important;left:14px!important;right:14px!important}
+  .single-project-experience-page .px-stage{padding-top:78px!important;padding-bottom:30px!important;overflow:hidden!important}
+  .single-project-experience-page .px-hint{bottom:7px!important;font-size:6px!important}
+
+  /* ---------- INTRO / LOGO ---------- */
+  .single-project-experience-page .px-project-name{
+    top:72px!important;
+    width:88vw!important;
+    max-width:560px!important;
+    font-size:clamp(15px,4.8vw,22px)!important;
+    line-height:1.18!important;
+    white-space:normal!important;
+    text-align:center!important;
+  }
+  .single-project-experience-page .px-intro-mark{
+    left:50%!important;
+    right:auto!important;
+    top:110px!important;
+    bottom:58px!important;
+    width:92vw!important;
+    height:auto!important;
+    transform:translateX(-50%)!important;
+    display:grid!important;
+    place-items:center!important;
+    overflow:visible!important;
+  }
+  .single-project-experience-page .px-logo-host{
+    width:min(84vw,520px)!important;
+    height:min(42svh,360px)!important;
+    margin:0 auto!important;
+    transform:scale(.92)!important;
+  }
+  .single-project-experience-page .project-logo-face img{
+    max-width:88%!important;
+    max-height:88%!important;
+    object-fit:contain!important;
+  }
+  .single-project-experience-page .px-intro-caption{bottom:24px!important;font-size:6.5px!important}
+
+  /* ---------- NORMAL PROJECT SECTIONS ----------
+     Copy first, media second. Same project-step mechanic, only mobile geometry changes. */
+  .single-project-experience-page .px-layout-grid,
+  .single-project-experience-page .px-layout-grid:has(.px-grid-copy.long-copy){
+    width:calc(100vw - 28px)!important;
+    height:calc(100svh - 126px)!important;
+    max-height:760px!important;
+    margin:66px auto 0!important;
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    grid-template-areas:"copy" "visual"!important;
+    grid-template-rows:auto minmax(0,1fr)!important;
+    gap:12px!important;
+    align-content:center!important;
+    align-items:stretch!important;
+    overflow:hidden!important;
+    direction:ltr!important;
+  }
+  .single-project-experience-page .px-layout-grid.no-media{
+    width:calc(100vw - 32px)!important;
+    grid-template-areas:"copy"!important;
+    grid-template-rows:1fr!important;
+    align-items:center!important;
+  }
+
+  .single-project-experience-page .px-grid-copy{
+    grid-area:copy!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    max-height:none!important;
+    padding:0 2px!important;
+    margin:0!important;
+    overflow:visible!important;
+    background:transparent!important;
+    border:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+  }
+  .single-project-experience-page.lang-en .px-grid-copy{direction:ltr!important;text-align:left!important}
+  .single-project-experience-page.lang-ar .px-grid-copy{direction:rtl!important;text-align:right!important}
+
+  .single-project-experience-page .px-grid-kicker{
+    height:auto!important;
+    min-height:0!important;
+    margin:0 0 7px!important;
+    gap:6px!important;
+    font-size:6.5px!important;
+    line-height:1.25!important;
+  }
+  .single-project-experience-page.lang-ar .px-grid-kicker{font-size:7.5px!important}
+
+  .single-project-experience-page .px-grid-title,
+  .single-project-experience-page .px-products-grid-head h2{
+    width:100%!important;
+    margin:0!important;
+    font-size:clamp(24px,7.2vw,34px)!important;
+    line-height:1.06!important;
+    white-space:normal!important;
+    text-wrap:balance!important;
+    overflow:visible!important;
+  }
+  .single-project-experience-page.lang-ar .px-grid-title,
+  .single-project-experience-page.lang-ar .px-products-grid-head h2{
+    line-height:1.22!important;
+  }
+
+  .single-project-experience-page .px-grid-body,
+  .single-project-experience-page .px-products-grid-description{
+    width:100%!important;
+    max-width:none!important;
+    max-height:none!important;
+    margin-top:10px!important;
+    padding:0!important;
+    font-size:clamp(10.5px,2.8vw,12.5px)!important;
+    line-height:1.58!important;
+    overflow:visible!important;
+    white-space:normal!important;
+    text-overflow:clip!important;
+    columns:auto!important;
+  }
+  .single-project-experience-page.lang-ar .px-grid-body,
+  .single-project-experience-page.lang-ar .px-products-grid-description{
+    line-height:1.72!important;
+  }
+
+  /* Long copy: keep all words visible by giving text more room and media a little less. */
+  .single-project-experience-page .px-grid-copy.long-copy .px-grid-title{font-size:clamp(22px,6.7vw,31px)!important}
+  .single-project-experience-page .px-grid-copy.long-copy .px-grid-body{font-size:clamp(9.8px,2.65vw,11.7px)!important;line-height:1.52!important}
+  .single-project-experience-page.lang-ar .px-grid-copy.long-copy .px-grid-body{line-height:1.66!important}
+
+  /* Media */
+  .single-project-experience-page .px-grid-visual{
+    grid-area:visual!important;
+    width:100%!important;
+    height:100%!important;
+    min-width:0!important;
+    min-height:0!important;
+    padding:0!important;
+    margin:0!important;
+    display:grid!important;
+    place-items:center!important;
+    overflow:hidden!important;
+  }
+  .single-project-experience-page .px-grid-image{
+    width:100%!important;
+    height:100%!important;
+    max-width:100%!important;
+    max-height:34svh!important;
+    margin:0!important;
+    border-radius:14px!important;
+    overflow:hidden!important;
+    background:#060707!important;
+  }
+  .single-project-experience-page .px-grid-image img{
+    width:100%!important;
+    height:100%!important;
+    max-height:34svh!important;
+    object-fit:contain!important;
+    object-position:center!important;
+    background:#060707!important;
+  }
+  .single-project-experience-page .px-media-deck{
+    width:100%!important;
+    height:min(34svh,330px)!important;
+    min-height:0!important;
+    max-height:34svh!important;
+    margin:0!important;
+  }
+  .single-project-experience-page .px-media-card{border-radius:14px!important;overflow:hidden!important}
+  .single-project-experience-page .px-media-card img{object-fit:contain!important;border-radius:14px!important}
+  .single-project-experience-page .px-media-count{font-size:6px!important;bottom:3px!important}
+
+  .single-project-experience-page .px-layout-grid:has(.px-grid-copy.long-copy) .px-grid-image,
+  .single-project-experience-page .px-layout-grid:has(.px-grid-copy.long-copy) .px-grid-image img,
+  .single-project-experience-page .px-layout-grid:has(.px-grid-copy.long-copy) .px-media-deck{
+    max-height:27svh!important;
+    height:min(27svh,270px)!important;
+  }
+
+  /* Product section: preserve the existing project mechanic but keep copy readable. */
+  .single-project-experience-page .px-products-grid-head{
+    width:calc(100vw - 28px)!important;
+    height:auto!important;
+    margin:72px auto 10px!important;
+    overflow:visible!important;
+    position:relative!important;
+  }
+  .single-project-experience-page .px-products-grid-head .px-grid-kicker,
+  .single-project-experience-page .px-products-grid-head h2,
+  .single-project-experience-page .px-products-grid-description{
+    position:static!important;
+  }
+  .single-project-experience-page .px-products-grid-description{
+    max-width:100%!important;
+    margin-top:8px!important;
+  }
+  .single-project-experience-page .px-products-grid-row{
+    width:calc(100vw - 20px)!important;
+    height:min(48svh,430px)!important;
+    padding-inline:4px!important;
+    gap:10px!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scroll-snap-type:x mandatory!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+  .single-project-experience-page .px-product-grid-item{
+    flex:0 0 min(74vw,320px)!important;
+    min-width:min(74vw,320px)!important;
+    height:100%!important;
+    scroll-snap-align:center!important;
+  }
+  .single-project-experience-page .px-product-grid-item .px-product-viewer{
+    width:100%!important;
+    height:min(39svh,350px)!important;
+  }
+  .single-project-experience-page .px-product-grid-name{font-size:7px!important}
+}
+
+/* Small phones */
+@media (max-width:390px){
+  .single-project-experience-page .px-layout-grid,
+  .single-project-experience-page .px-layout-grid:has(.px-grid-copy.long-copy){
+    width:calc(100vw - 22px)!important;
+    margin-top:62px!important;
+    gap:9px!important;
+  }
+  .single-project-experience-page .px-grid-title{font-size:clamp(22px,7vw,30px)!important}
+  .single-project-experience-page .px-grid-body{font-size:clamp(9.7px,2.75vw,11.2px)!important;line-height:1.52!important}
+  .single-project-experience-page.lang-ar .px-grid-body{line-height:1.64!important}
+  .single-project-experience-page .px-grid-image,
+  .single-project-experience-page .px-grid-image img,
+  .single-project-experience-page .px-media-deck{max-height:31svh!important;height:min(31svh,285px)!important}
+  .single-project-experience-page .px-logo-host{width:80vw!important;height:min(38svh,300px)!important}
+}
+
+/* Short / landscape phones */
+@media (max-width:760px) and (max-height:620px){
+  .single-project-experience-page .px-layout-grid,
+  .single-project-experience-page .px-layout-grid:has(.px-grid-copy.long-copy){
+    margin-top:54px!important;
+    height:calc(100svh - 104px)!important;
+    grid-template-columns:minmax(0,54%) minmax(0,46%)!important;
+    grid-template-areas:"copy visual"!important;
+    grid-template-rows:1fr!important;
+    gap:12px!important;
+  }
+  .single-project-experience-page .px-grid-title{font-size:clamp(19px,4.7vw,28px)!important}
+  .single-project-experience-page .px-grid-body{font-size:clamp(8.8px,2.05vw,10.8px)!important;line-height:1.45!important}
+  .single-project-experience-page .px-grid-image,
+  .single-project-experience-page .px-grid-image img,
+  .single-project-experience-page .px-media-deck{max-height:58svh!important;height:min(58svh,330px)!important}
+  .single-project-experience-page .px-logo-host{height:min(58svh,320px)!important;width:70vw!important}
+}

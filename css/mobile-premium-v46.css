@@ -1,0 +1,216 @@
+/* AMUR V45 — PREMIUM LIGHT MOBILE EXPERIENCE
+   Mobile only. Desktop >= 761px is intentionally untouched. */
+@media (max-width:760px){
+  :root{--m-pad:16px;--m-gap:12px;--m-radius:20px;--m-line:rgba(255,255,255,.11);--m-glass:rgba(11,13,13,.74)}
+  html{scroll-behavior:smooth!important;scroll-snap-type:y proximity;overflow-x:hidden!important}
+  body{overflow-x:hidden!important;overscroll-behavior-y:auto!important;-webkit-overflow-scrolling:touch;background:#050606!important}
+
+  /* keep atmosphere, remove expensive desktop physics */
+  .icon-stage,.mouse-field,.global-line,.global-orb,.construction-grid,.hero-orbit,.hero-dot,
+  .idea-cluster,.work-beat,.process-visual{display:none!important}
+  .global-brush{opacity:.08!important;filter:none!important}
+  .ambient{opacity:.13!important;filter:blur(24px)!important;transform:none!important}
+  .grain{opacity:.035!important}
+  .magnetic{transform:none!important}
+
+  /* compact premium header */
+  .site-header{position:fixed!important;top:0!important;left:0!important;right:0!important;padding:8px 0!important;background:linear-gradient(to bottom,rgba(5,6,6,.9),rgba(5,6,6,.48),transparent)!important;backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+  .site-header .shell.nav{width:calc(100% - 24px)!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important}
+  .brand{font-size:18px!important}.nav-links{display:none!important}.nav-meta{margin-left:auto!important}.nav-meta .nav-caption,.scene-count{display:none!important}
+  .lang-toggle{min-width:42px!important;width:42px!important;height:32px!important;font-size:9px!important;border-color:var(--m-line)!important}
+
+  /* turn desktop pinned story into light scene cards */
+  .story{height:auto!important;min-height:0!important;padding:58px 0 18px!important}
+  .story-stage{position:relative!important;top:auto!important;height:auto!important;min-height:0!important;overflow:visible!important;perspective:none!important}
+  .scene,.scene.active{position:relative!important;inset:auto!important;width:calc(100% - 20px)!important;height:auto!important;min-height:0!important;margin:0 auto 14px!important;padding:22px 0 24px!important;display:block!important;opacity:1!important;filter:none!important;transform:none!important;pointer-events:auto!important;will-change:auto!important;scroll-snap-align:start;scroll-margin-top:58px;border:1px solid var(--m-line)!important;border-radius:var(--m-radius)!important;overflow:hidden!important;background:linear-gradient(180deg,rgba(255,255,255,.027),rgba(255,255,255,.008))!important;box-shadow:0 18px 50px rgba(0,0,0,.22)!important}
+  .scene>.shell{width:calc(100% - 28px)!important;transform:none!important;max-height:none!important;overflow:visible!important}
+  .scene-kicker{margin-bottom:14px!important;gap:9px!important}.scene-kicker span,.scene-kicker b{font-size:7.5px!important;letter-spacing:.13em!important}
+
+  /* JS reveal: subtle, fast, no pinning */
+  .scene.mobile-reveal,.contact.mobile-reveal,.px-step.mobile-reveal{opacity:.58!important;transform:translateY(18px) scale(.988)!important;transition:opacity .46s cubic-bezier(.22,.72,.23,1),transform .46s cubic-bezier(.22,.72,.23,1)!important}
+  .scene.mobile-reveal.mobile-in,.contact.mobile-reveal.mobile-in,.px-step.mobile-reveal.mobile-in{opacity:1!important;transform:translateY(0) scale(1)!important}
+
+  /* HERO — compact but still cinematic */
+  .scene-hero{min-height:calc(100svh - 76px)!important;padding-top:26px!important;display:flex!important;align-items:center!important}
+  .scene-grid.hero-grid{display:flex!important;flex-direction:column!important;gap:6px!important;align-items:stretch!important;padding:0!important}
+  .hero-copy{order:1!important;padding:0!important;text-align:left!important}body.lang-ar .hero-copy{text-align:right!important}
+  .glass-pill{font-size:7px!important;line-height:1.35!important;padding:7px 9px!important;margin-bottom:10px!important;border-color:var(--m-line)!important}
+  .hero-copy h1{font-size:clamp(35px,10.5vw,48px)!important;line-height:1.01!important;margin:8px 0 12px!important}
+  .hero-copy p{font-size:12px!important;line-height:1.62!important;max-width:96%!important;opacity:.78!important}
+  .hero-actions{margin-top:14px!important}.hero-actions small{font-size:6.5px!important}.hero-actions .line-link{font-size:9px!important}
+  .hero-art{order:2!important;height:auto!important;min-height:0!important;display:flex!important;justify-content:center!important;margin-top:3px!important}
+  .logo-float{width:min(61vw,238px)!important;max-width:238px!important;filter:drop-shadow(0 22px 30px rgba(0,0,0,.35))}
+  .logo-drag,#logoDrag{pointer-events:none!important;touch-action:pan-y!important}.logo-rotor{animation:mobileLogoBreath 5.5s ease-in-out infinite!important}
+  @keyframes mobileLogoBreath{0%,100%{transform:rotateY(-2deg) rotateX(1deg) translateY(0)}50%{transform:rotateY(3deg) rotateX(-1deg) translateY(-5px)}}
+  .scroll-cue{display:none!important}
+
+  /* ABOUT */
+  .about-name{margin-bottom:14px!important}.about-name h2{font-size:31px!important}.about-name p{font-size:8.5px!important}
+  .about-layout{display:flex!important;flex-direction:column!important;gap:17px!important}
+  .about-copy h3{font-size:24px!important;line-height:1.18!important;margin-bottom:13px!important}
+  .about-points{display:grid!important;gap:0!important}.about-points p{font-size:10.7px!important;line-height:1.52!important;padding:8px 0!important;grid-template-columns:28px 1fr!important}
+  .signature{margin-top:13px!important}.portrait-zone{order:2!important;height:auto!important;min-height:0!important;display:flex!important;justify-content:center!important;overflow:visible!important}
+  .portrait{position:relative!important;width:min(53vw,205px)!important;max-height:none!important;height:auto!important;object-fit:contain!important;object-position:center!important;transform:none!important;opacity:1!important;filter:drop-shadow(0 18px 26px rgba(0,0,0,.34))}
+  .portrait-halo{display:block!important;width:200px!important;height:200px!important;opacity:.2!important;filter:blur(15px)!important}.portrait-lines{display:none!important}
+
+  /* WORK — orderly 2-column gallery, close spacing, consistent cards */
+  .scene-work .work-scene{width:calc(100% - 22px)!important}
+  .work-head{display:block!important;margin-bottom:14px!important}.work-head h2{font-size:29px!important;line-height:1.04!important;margin-bottom:8px!important}.work-head p{font-size:10.5px!important;line-height:1.5!important;opacity:.72!important}
+  .work-list{width:100%!important;overflow:visible!important;padding:0!important;margin:0!important;scroll-snap-type:none!important}
+  .work-horizontal-track{width:100%!important;max-width:none!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;padding:0!important;transform:none!important}
+  .work-logo-scene,.work-logo-scene.is-active,.work-logo-scene:not(.is-active){position:relative!important;width:100%!important;min-width:0!important;height:48vw!important;min-height:164px!important;max-height:215px!important;opacity:1!important;filter:none!important;transform:none!important;overflow:hidden!important;border-radius:14px!important;border:1px solid rgba(255,255,255,.1)!important;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.012))!important;box-shadow:0 10px 25px rgba(0,0,0,.22)!important;transition:transform .22s ease,border-color .22s ease!important}
+  .work-logo-scene:active{transform:scale(.975)!important;border-color:rgba(255,255,255,.22)!important}
+  .work-logo-scene:nth-child(2n){transform:translateY(8px)!important}.work-logo-scene:nth-child(2n):active{transform:translateY(8px) scale(.975)!important}
+  .work-logo-top{left:8px!important;right:8px!important;top:8px!important;font-size:5.2px!important;opacity:.65!important}
+  .work-logo-center{padding:28px 7px 50px!important}.work-logo-center .project-logo-drag{width:88%!important;height:22vw!important;max-height:88px!important;pointer-events:none!important}
+  .work-logo-bottom{left:8px!important;right:8px!important;bottom:8px!important}.work-logo-bottom h3{font-size:12.8px!important;line-height:1.04!important}.work-logo-bottom p{font-size:6.3px!important;line-height:1.28!important;opacity:.7!important}
+  .work-horizontal-progress{display:none!important}
+
+  /* SERVICES — compact cards, tiny stagger */
+  .services-head{display:block!important;margin-bottom:14px!important}.services-head h2{font-size:29px!important;line-height:1.06!important}
+  .services-stage{display:block!important}.services-rail{display:none!important}.services{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important}
+  .service-row,.service-row.active{position:relative!important;display:block!important;padding:13px!important;min-height:146px!important;opacity:1!important;transform:none!important;filter:none!important;border:1px solid rgba(255,255,255,.085)!important;border-radius:14px!important;background:rgba(255,255,255,.018)!important}
+  .service-row:nth-child(even){transform:translateY(6px)!important}.service-row span{display:block!important;font-size:7.5px!important;margin-bottom:15px!important}.service-row small{display:block!important;font-size:6.3px!important;margin-bottom:5px!important}.service-row h3{font-size:17px!important;line-height:1.07!important}.service-row p{font-size:9.2px!important;line-height:1.42!important;opacity:.69!important;margin-top:7px!important}
+
+  /* PROCESS */
+  .process-scene{display:block!important}.process-copy{width:100%!important;margin-bottom:14px!important}.process-copy h2{font-size:29px!important;line-height:1.05!important}.process-copy p{font-size:10.5px!important;line-height:1.5!important;opacity:.7!important}
+  .process-stack{position:relative!important;height:auto!important;min-height:0!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;overflow:visible!important}
+  .process-card,.process-card.active{position:relative!important;inset:auto!important;width:auto!important;height:auto!important;min-height:145px!important;padding:13px!important;opacity:1!important;transform:none!important;filter:none!important;pointer-events:auto!important;border-radius:14px!important}
+  .process-card:nth-child(2n){transform:translateY(6px)!important}.process-card small{font-size:6.3px!important}.process-card h3{font-size:16px!important;line-height:1.1!important;margin:9px 0!important}.process-card p{font-size:9.1px!important;line-height:1.43!important;opacity:.7!important}.timeline{display:none!important}
+
+  /* CONTACT as a final scene */
+  .contact{width:calc(100% - 20px)!important;min-height:70svh!important;margin:0 auto 12px!important;padding:54px 0 35px!important;border:1px solid var(--m-line)!important;border-radius:var(--m-radius)!important;overflow:hidden!important;scroll-snap-align:start;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.008))!important}
+  .contact-inner{width:calc(100% - 28px)!important;transform:none!important}.contact-copy{width:100%!important}.contact-copy h2{font-size:32px!important;line-height:1.03!important}.contact-copy p{font-size:10.7px!important;line-height:1.55!important;max-width:94%!important}.giant{font-size:27vw!important;opacity:.07!important}.contact-ring{opacity:.22!important}.contact-line{opacity:.12!important}.contact-glow{opacity:.2!important}
+
+  footer{padding:16px 0 22px!important}.footer-row{font-size:6.5px!important;gap:8px!important}
+
+  /* ---------- PROJECT PAGE ---------- */
+  .single-project-experience-page{scroll-snap-type:y proximity!important}
+  .single-project-experience-page .px-experience{height:auto!important;min-height:0!important;padding-top:58px!important}
+  .single-project-experience-page .px-sticky{position:relative!important;top:auto!important;height:auto!important;min-height:0!important;overflow:visible!important;perspective:none!important;background:#050606!important}
+  .single-project-experience-page .px-world{position:fixed!important;inset:0!important;opacity:.31!important}.single-project-experience-page .px-chess-floor,.single-project-experience-page .px-rim,.single-project-experience-page .px-lines,.single-project-experience-page .px-dust{display:none!important}
+  .single-project-experience-page .px-shell.shell{height:auto!important;min-height:0!important;width:100%!important;padding:0 10px!important}
+  .single-project-experience-page .px-topline,.single-project-experience-page .px-progress,.single-project-experience-page .px-hint{display:none!important}
+  .single-project-experience-page .px-stage{position:relative!important;inset:auto!important;width:100%!important;height:auto!important;overflow:visible!important;padding:8px 0 16px!important;display:block!important}
+  .single-project-experience-page .px-step{position:relative!important;inset:auto!important;width:100%!important;height:auto!important;min-height:0!important;margin:0 0 12px!important;padding:18px!important;opacity:1!important;transform:none!important;filter:none!important;pointer-events:auto!important;contain:none!important;overflow:hidden!important;border:1px solid var(--m-line)!important;border-radius:var(--m-radius)!important;background:linear-gradient(180deg,rgba(255,255,255,.028),rgba(255,255,255,.008))!important;box-shadow:0 16px 42px rgba(0,0,0,.2)!important;scroll-snap-align:start;scroll-margin-top:58px}
+
+  /* Intro: no overlap, smaller logo, scroll works anywhere */
+  .single-project-experience-page .px-step-intro{min-height:calc(100svh - 82px)!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;padding:24px 16px!important}
+  .single-project-experience-page .px-project-name{position:relative!important;top:auto!important;left:auto!important;transform:none!important;width:100%!important;white-space:normal!important;text-align:center!important;font-size:clamp(21px,6.7vw,29px)!important;line-height:1.06!important;margin:0 0 12px!important}
+  .single-project-experience-page .px-intro-mark{position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:100%!important;height:auto!important;min-height:245px!important;transform:none!important;display:grid!important;place-items:center!important;overflow:visible!important;pointer-events:none!important;touch-action:pan-y!important}
+  .single-project-experience-page .px-logo-host{width:min(58vw,225px)!important;height:210px!important;margin:0 auto!important;transform:none!important;pointer-events:none!important;perspective:none!important}
+  .single-project-experience-page .px-logo-grab-layer{pointer-events:none!important;touch-action:pan-y!important;cursor:default!important}.single-project-experience-page .project-logo-rotor{transform:none!important;will-change:auto!important;animation:mobileProjectBreath 5.8s ease-in-out infinite!important}.single-project-experience-page .project-logo-face.back{display:none!important}
+  @keyframes mobileProjectBreath{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-5px) scale(1.015)}}
+  .single-project-experience-page .px-intro-caption{position:relative!important;left:auto!important;right:auto!important;bottom:auto!important;margin-top:3px!important;text-align:center!important;font-size:7px!important}
+
+  /* Project sections: image + copy clean, close, no overlay */
+  .single-project-experience-page .px-layout-grid,.single-project-experience-page .px-layout-grid:has(.px-grid-copy.long-copy),.single-project-experience-page .px-layout-grid.no-media{width:100%!important;height:auto!important;margin:0!important;display:flex!important;flex-direction:column!important;gap:13px!important;overflow:visible!important;align-items:stretch!important}
+  .single-project-experience-page .px-grid-visual{order:1!important;width:100%!important;height:auto!important;min-height:0!important;padding:0!important;overflow:visible!important}
+  .single-project-experience-page .px-grid-copy{order:2!important;width:100%!important;max-width:none!important;max-height:none!important;overflow:visible!important;padding:0!important;background:transparent!important}
+  .single-project-experience-page .px-grid-kicker{position:static!important;height:auto!important;margin:0 0 7px!important;font-size:6.5px!important}.single-project-experience-page .px-grid-title,.single-project-experience-page .px-products-grid-head h2{position:static!important;font-size:clamp(25px,7.7vw,36px)!important;line-height:1.06!important;margin:0!important;white-space:normal!important;overflow:visible!important}
+  .single-project-experience-page .px-grid-body,.single-project-experience-page .px-products-grid-description{position:static!important;width:100%!important;max-width:none!important;max-height:none!important;margin-top:10px!important;font-size:11.5px!important;line-height:1.62!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;opacity:.78!important}
+  .single-project-experience-page .px-grid-image,.single-project-experience-page .px-media-deck{width:100%!important;height:auto!important;max-height:none!important;overflow:hidden!important;margin:0!important;border-radius:14px!important;border:1px solid rgba(255,255,255,.08)!important;background:rgba(255,255,255,.015)!important}
+  .single-project-experience-page .px-grid-image img{width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;display:block!important}.single-project-experience-page .px-media-deck{min-height:260px!important;height:66vw!important;max-height:370px!important}.single-project-experience-page .px-media-card{inset:0!important}.single-project-experience-page .px-media-card img{object-fit:contain!important}
+
+  /* Products — all visible, paired tightly */
+  .single-project-experience-page .px-products-grid{display:block!important;overflow:visible!important}.single-project-experience-page .px-products-grid-head{position:static!important;width:100%!important;height:auto!important;margin:0 0 13px!important;overflow:visible!important}
+  .single-project-experience-page .px-products-grid-row{width:100%!important;height:auto!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;overflow:visible!important;padding:0!important;scroll-snap-type:none!important}
+  .single-project-experience-page .px-product-grid-item{width:100%!important;min-width:0!important;height:auto!important;overflow:visible!important;scroll-snap-align:none!important;border:1px solid rgba(255,255,255,.08)!important;border-radius:13px!important;padding:7px!important;background:rgba(255,255,255,.015)!important}
+  .single-project-experience-page .px-product-grid-item .px-product-viewer{width:100%!important;height:45vw!important;max-height:205px!important;min-height:150px!important;pointer-events:none!important;touch-action:pan-y!important}.single-project-experience-page .px-product-rotor{transform:none!important;will-change:auto!important}.single-project-experience-page .px-product-back{display:none!important}.single-project-experience-page .px-product-grid-name{font-size:7px!important;margin-top:5px!important;text-align:center!important}
+
+  .single-project-experience-page .px-exit{width:calc(100% - 20px)!important;min-height:52svh!important;margin:0 auto 12px!important;padding:46px 18px 32px!important;border:1px solid var(--m-line)!important;border-radius:var(--m-radius)!important;scroll-snap-align:start!important;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.008))!important}.single-project-experience-page .px-exit h2{font-size:35px!important;line-height:1.02!important}
+}
+
+@media(max-width:390px){
+  .work-logo-scene,.work-logo-scene.is-active,.work-logo-scene:not(.is-active){min-height:154px!important;height:50vw!important}
+  .work-logo-center .project-logo-drag{height:21vw!important}
+  .service-row,.service-row.active{min-height:138px!important;padding:11px!important}.service-row h3{font-size:15.5px!important}.service-row p{font-size:8.6px!important}
+  .process-card,.process-card.active{min-height:138px!important;padding:11px!important}.process-card h3{font-size:14.8px!important}.process-card p{font-size:8.6px!important}
+  .single-project-experience-page .px-products-grid-row{grid-template-columns:1fr 1fr!important;gap:7px!important}
+}
+
+@media(max-width:760px) and (prefers-reduced-motion:reduce){
+  .scene.mobile-reveal,.contact.mobile-reveal,.px-step.mobile-reveal,.scene.mobile-reveal.mobile-in,.contact.mobile-reveal.mobile-in,.px-step.mobile-reveal.mobile-in{opacity:1!important;transform:none!important;transition:none!important}
+  .logo-rotor,.single-project-experience-page .project-logo-rotor{animation:none!important}
+}
+
+
+/* =========================================================
+   AMUR V46 — final mobile polish
+   Mobile only. Desktop >= 761px remains untouched.
+   ========================================================= */
+@media (max-width:760px){
+  /* tighter rhythm so sections feel designed, not empty */
+  .scene,.scene.active{margin-bottom:10px!important;padding-top:20px!important;padding-bottom:20px!important}
+  .scene>.shell{width:calc(100% - 30px)!important}
+
+  /* full-width project cards stacked one under another */
+  .scene-work .work-scene{width:calc(100% - 26px)!important}
+  .work-list{width:100%!important;overflow:visible!important}
+  .work-horizontal-track{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+    width:100%!important;
+    padding:0!important;
+    margin:0!important;
+  }
+  .work-logo-scene,
+  .work-logo-scene.is-active,
+  .work-logo-scene:not(.is-active),
+  .work-logo-scene:nth-child(2n){
+    width:100%!important;
+    min-width:0!important;
+    height:218px!important;
+    min-height:218px!important;
+    max-height:218px!important;
+    transform:none!important;
+    border-radius:16px!important;
+    display:block!important;
+    overflow:hidden!important;
+  }
+  .work-logo-scene:active,
+  .work-logo-scene:nth-child(2n):active{transform:scale(.985)!important}
+  .work-logo-top{left:12px!important;right:12px!important;top:11px!important;font-size:6px!important;line-height:1.25!important}
+  .work-logo-center{padding:34px 18px 60px!important;display:grid!important;place-items:center!important}
+  .work-logo-center .project-logo-drag{width:min(58%,220px)!important;height:96px!important;max-height:96px!important;margin:auto!important}
+  .work-logo-bottom{left:12px!important;right:12px!important;bottom:11px!important}
+  .work-logo-bottom h3{font-size:17px!important;line-height:1.03!important;max-width:86%!important}
+  .work-logo-bottom p{font-size:7.6px!important;line-height:1.35!important;max-width:88%!important;margin-top:5px!important}
+
+  /* scene-to-scene scroll motion: lightweight transform + opacity only */
+  .scene.mobile-scroll-motion,.contact.mobile-scroll-motion,.px-step.mobile-scroll-motion{
+    transform:translate3d(0,var(--m-shift,0px),0) scale(var(--m-scale,1))!important;
+    opacity:var(--m-opacity,1)!important;
+    transform-origin:50% 34%!important;
+    will-change:transform,opacity!important;
+  }
+
+  /* About portrait gets its own subtle scroll life */
+  .portrait.mobile-portrait-motion{
+    transform:translate3d(0,var(--portrait-y,0px),0) scale(var(--portrait-scale,1))!important;
+    opacity:var(--portrait-opacity,1)!important;
+    will-change:transform,opacity!important;
+    transition:filter .25s ease!important;
+  }
+
+  /* softer spacing around About portrait */
+  .portrait-zone{margin-top:2px!important;padding-bottom:2px!important}
+  .portrait{width:min(50vw,190px)!important}
+
+  /* keep sections visually connected */
+  .scene-work,.scene-about,.scene-services,.scene-process{
+    background:
+      radial-gradient(120% 80% at 100% 0%,rgba(123,151,143,.055),transparent 52%),
+      linear-gradient(180deg,rgba(255,255,255,.026),rgba(255,255,255,.008))!important;
+  }
+}
+
+@media(max-width:390px){
+  .work-logo-scene,
+  .work-logo-scene.is-active,
+  .work-logo-scene:not(.is-active),
+  .work-logo-scene:nth-child(2n){height:205px!important;min-height:205px!important;max-height:205px!important}
+  .work-logo-center .project-logo-drag{height:86px!important;max-height:86px!important}
+  .work-logo-bottom h3{font-size:15.5px!important}
+}
