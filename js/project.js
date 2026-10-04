@@ -45,6 +45,8 @@ Promise.race([
 const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
 const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
 
+function pxSimpleMobile(){ return matchMedia("(max-width:760px)").matches; }
+
 const cfg=window.AMUR_CONFIG||{};
 const sb=supabase.createClient(cfg.SUPABASE_URL,cfg.SUPABASE_ANON_KEY);
 const slug=new URLSearchParams(location.search).get("slug");
@@ -320,6 +322,7 @@ function rerenderLoadedProject(){
 
 /* AMUR-like free rotation + inertia + calm return */
 function initProjectBrandRotors(scope=document){
+  if(pxSimpleMobile()) return;
   const hosts=[...scope.querySelectorAll("[data-brand-rotor]")].filter(el=>!el.dataset.rotorReady);
 
   hosts.forEach(host=>{
@@ -557,6 +560,7 @@ function initMediaDecks(scope=document){
 function initProductCollections(scope=document){ return; }
 
 function initProductViewers(scope=document){
+  if(pxSimpleMobile()) return;
   const viewers=[...scope.querySelectorAll("[data-product-viewer]")].filter(v=>!v.dataset.ready);
 
   viewers.forEach(viewer=>{
@@ -672,6 +676,7 @@ function fitFixedCopy(scope=document){
 function setExperienceHeight(){
   const exp=document.getElementById("projectExperience");
   if(!exp || !steps.length)return;
+  if(pxSimpleMobile()){ exp.style.height="auto"; return; }
   const mobile=matchMedia("(max-width:760px)").matches;
   const perStep=mobile?118:122;
   exp.style.height=`${Math.max(360,steps.length*perStep)}vh`;
@@ -688,6 +693,10 @@ function setStep(el,scale,opacity,blur,z,y){
 function updateExperience(){
   const exp=document.getElementById("projectExperience");
   if(!exp||!stepEls.length)return;
+  if(pxSimpleMobile()){
+    stepEls.forEach(el=>{el.style.transform="none";el.style.opacity="1";el.style.filter="none";el.style.pointerEvents="auto";});
+    return;
+  }
 
   const r=exp.getBoundingClientRect();
   const max=Math.max(1,exp.offsetHeight-innerHeight);

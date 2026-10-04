@@ -112,6 +112,8 @@ const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
 
 const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
 
+function amurSimpleMobile(){ return matchMedia("(max-width:760px)").matches; }
+
 const header=document.getElementById("siteHeader"),year=document.getElementById("year");
 
 if(year)year.textContent=new Date().getFullYear();
@@ -160,7 +162,7 @@ const iconStage=document.getElementById("iconStage");
 
 const icons=[...document.querySelectorAll(".physics-icon")];
 
-icons.forEach(resolveIcon);
+if(!amurSimpleMobile()) icons.forEach(resolveIcon);
 
 let iconPhysicsStarted=false;
 
@@ -168,6 +170,7 @@ let iconPhysicsStarted=false;
 
 function startAboutIconPhysics(){
 
+  if(amurSimpleMobile()) return;
   if(iconPhysicsStarted || !icons.length) return;
 
   iconPhysicsStarted=true;
@@ -290,7 +293,7 @@ function startAboutIconPhysics(){
 
 const drag=document.getElementById("logoDrag"),rotor=document.getElementById("logoRotor");
 
-if(drag&&rotor){
+if(drag&&rotor&&!amurSimpleMobile()){
 
   let rx=0,ry=0,vx=0,vy=0,down=false,lx=0,ly=0,lt=performance.now(),released=0;
 
@@ -405,6 +408,7 @@ function setSceneVisual(scene,scale,opacity,blur,z){
 
 function updateStory(){
 
+  if(amurSimpleMobile()) return;
   if(!story||!scenes.length)return;
 
 
@@ -1011,6 +1015,7 @@ function updateLivingBackground(u){
 let v2Tick=false;
 
 function updateV2(){
+  if(amurSimpleMobile()) return;
 
   v2Tick=false;
 
@@ -1097,6 +1102,7 @@ setSceneVisual=(scene,scale,opacity,blur,z)=>{
 /* sync header scene counter */
 
 function updateSceneCounter(){
+  if(amurSimpleMobile()) return;
 
   if(!story || !sceneCountEl) return;
 
@@ -1119,6 +1125,7 @@ function updateSceneCounter(){
 /* Make project idea gather visibly staggered and then fully settle */
 
 function updateWorkPolish(){
+  if(amurSimpleMobile()) return;
 
   if(!story || !ideaPieces.length) return;
 
@@ -1189,6 +1196,7 @@ function updateWorkPolish(){
 /* About portrait — stronger "small from depth -> full presence" */
 
 function updateAboutPortraitPolish(){
+  if(amurSimpleMobile()) return;
 
   if(!story || !portrait) return;
 
@@ -1233,6 +1241,7 @@ function updateAboutPortraitPolish(){
 /* background layers breathe more clearly, still subtle */
 
 function updateBackgroundPolish(){
+  if(amurSimpleMobile()) return;
 
   if(!story) return;
 
@@ -1273,6 +1282,7 @@ function updateBackgroundPolish(){
 let v4Tick=false;
 
 function updateV4(){
+  if(amurSimpleMobile()) return;
 
   v4Tick=false;
 
@@ -1387,6 +1397,7 @@ function setServiceState(index, frac=0){
 
 
 function updateServicesAndProcess(){
+  if(amurSimpleMobile()) return;
 
   if(!story) return;
 
@@ -1509,6 +1520,7 @@ const contactLines=[...document.querySelectorAll(".contact-line")];
 
 
 function updateContactScene(){
+  if(amurSimpleMobile()) return;
 
   if(!contact) return;
 
@@ -1607,6 +1619,7 @@ function updateContactScene(){
 function applyResponsiveStoryHeight(){
 
   if(!story) return;
+  if(amurSimpleMobile()){ story.style.height="auto"; return; }
 
   if(innerWidth<=430) story.style.height="1120vh";
 
@@ -1663,6 +1676,7 @@ requestV6();
    =============================== */
 
 function updateHorizontalWork(){
+  if(amurSimpleMobile()) return;
   const track=document.getElementById("workHorizontalTrack");
   if(!track) return;
   const cards=[...track.querySelectorAll(".work-logo-scene")];
@@ -1715,6 +1729,7 @@ setTimeout(requestHorizontalWork,350);
    =============================== */
 
 function initProjectBrandRotors(scope=document){
+  if(amurSimpleMobile()) return;
 
   const hosts=[...scope.querySelectorAll("[data-brand-rotor]")].filter(el=>!el.dataset.rotorReady);
 
