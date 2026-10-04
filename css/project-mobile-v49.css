@@ -1,0 +1,346 @@
+/* AMUR V49 — focused project-page mobile layout fix only.
+   Desktop >= 761px remains untouched. No JS or desktop layout changes. */
+
+@media (max-width:760px){
+  :root{
+    --pm49-pad: clamp(14px, 4.2vw, 20px);
+    --pm49-gap: clamp(14px, 4.6vw, 22px);
+    --pm49-radius: clamp(14px, 4.5vw, 20px);
+    --pm49-line: rgba(255,255,255,.09);
+    --pm49-soft: rgba(255,255,255,.028);
+  }
+
+  /* Keep the mobile page native and readable. */
+  .single-project-experience-page .px-experience{
+    height:auto!important;
+    min-height:0!important;
+    padding:62px 0 18px!important;
+  }
+  .single-project-experience-page .px-sticky{
+    position:relative!important;
+    top:auto!important;
+    height:auto!important;
+    min-height:0!important;
+    overflow:visible!important;
+  }
+  .single-project-experience-page .px-shell{
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:0!important;
+  }
+  .single-project-experience-page .px-stage{
+    position:relative!important;
+    inset:auto!important;
+    display:flex!important;
+    flex-direction:column!important;
+    gap:0!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    padding:0!important;
+    overflow:visible!important;
+  }
+
+  /* One clean editorial rhythm for every project section. */
+  .single-project-experience-page .px-step,
+  .single-project-experience-page .px-step.active{
+    position:relative!important;
+    inset:auto!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:clamp(24px,7vw,38px) var(--pm49-pad)!important;
+    box-sizing:border-box!important;
+    overflow:visible!important;
+    opacity:1!important;
+    filter:none!important;
+    pointer-events:auto!important;
+    background:transparent!important;
+    border:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+  }
+  .single-project-experience-page .px-step:not(.px-step-intro):not(.px-products-grid)::before{
+    content:"";
+    position:absolute;
+    left:var(--pm49-pad);
+    right:var(--pm49-pad);
+    top:0;
+    height:1px;
+    background:linear-gradient(90deg,transparent,var(--pm49-line) 10%,var(--pm49-line) 90%,transparent);
+  }
+
+  /* Text first, image directly after it — same case-study hierarchy, adapted to mobile. */
+  .single-project-experience-page .px-layout-grid,
+  .single-project-experience-page .px-layout-grid.has-media,
+  .single-project-experience-page .px-layout-grid.no-media,
+  .single-project-experience-page .px-layout-grid:has(.px-grid-copy.long-copy){
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-areas:"copy" "visual"!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:0!important;
+    gap:clamp(16px,5vw,24px)!important;
+    align-items:start!important;
+    overflow:visible!important;
+    direction:inherit!important;
+  }
+  .single-project-experience-page .px-grid-copy{
+    grid-area:copy!important;
+    order:1!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:visible!important;
+    background:none!important;
+    border:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    text-align:left!important;
+  }
+  .single-project-experience-page.lang-ar .px-grid-copy{
+    text-align:right!important;
+    direction:rtl!important;
+  }
+  .single-project-experience-page .px-grid-kicker{
+    position:static!important;
+    display:flex!important;
+    align-items:center!important;
+    gap:8px!important;
+    width:100%!important;
+    height:auto!important;
+    margin:0 0 10px!important;
+    padding:0!important;
+    font-size:clamp(8px,2.2vw,10px)!important;
+    line-height:1.25!important;
+    letter-spacing:.1em!important;
+    opacity:.68!important;
+  }
+  .single-project-experience-page.lang-ar .px-grid-kicker{
+    letter-spacing:0!important;
+    justify-content:flex-start!important;
+  }
+  .single-project-experience-page .px-grid-title{
+    position:static!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:0!important;
+    font-size:clamp(29px,8.8vw,39px)!important;
+    line-height:1.06!important;
+    letter-spacing:-.04em!important;
+    white-space:normal!important;
+    overflow:visible!important;
+    text-wrap:balance!important;
+  }
+  .single-project-experience-page.lang-ar .px-grid-title{
+    font-size:clamp(28px,8.2vw,38px)!important;
+    line-height:1.22!important;
+    letter-spacing:-.015em!important;
+    text-wrap:pretty!important;
+  }
+  .single-project-experience-page .px-grid-body{
+    display:block!important;
+    width:100%!important;
+    max-width:none!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:12px 0 0!important;
+    padding:0!important;
+    overflow:visible!important;
+    font-size:clamp(13.2px,3.75vw,15.2px)!important;
+    line-height:1.72!important;
+    letter-spacing:-.01em!important;
+    white-space:normal!important;
+    text-overflow:clip!important;
+    opacity:.82!important;
+  }
+  .single-project-experience-page.lang-ar .px-grid-body{
+    font-size:clamp(13.4px,3.8vw,15.3px)!important;
+    line-height:1.9!important;
+    letter-spacing:0!important;
+  }
+
+  /* Media belongs to the same composition, without giant empty boxes. */
+  .single-project-experience-page .px-grid-visual{
+    grid-area:visual!important;
+    order:2!important;
+    width:100%!important;
+    min-width:0!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:visible!important;
+    align-self:start!important;
+  }
+  .single-project-experience-page .px-grid-image,
+  .single-project-experience-page .px-media-deck{
+    width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+    border-radius:var(--pm49-radius)!important;
+    overflow:hidden!important;
+    border:1px solid rgba(255,255,255,.075)!important;
+    background:var(--pm49-soft)!important;
+    box-sizing:border-box!important;
+  }
+  .single-project-experience-page .px-grid-image{
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+  }
+  .single-project-experience-page .px-grid-image img{
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    object-fit:contain!important;
+    object-position:center!important;
+    background:#070808!important;
+  }
+  .single-project-experience-page .px-media-deck{
+    position:relative!important;
+    height:clamp(230px,68vw,420px)!important;
+    min-height:230px!important;
+    max-height:420px!important;
+  }
+  .single-project-experience-page .px-media-card{
+    inset:0!important;
+    border-radius:inherit!important;
+  }
+  .single-project-experience-page .px-media-card img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+    object-position:center!important;
+    border-radius:inherit!important;
+  }
+
+  /* Intro/logo: compact, centered and proportional on all phones. */
+  .single-project-experience-page .px-step-intro{
+    min-height:clamp(500px,78svh,690px)!important;
+    padding:clamp(22px,5vw,34px) var(--pm49-pad) clamp(28px,7vw,44px)!important;
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:flex-start!important;
+    align-items:stretch!important;
+    overflow:hidden!important;
+  }
+  .single-project-experience-page .px-project-name{
+    position:relative!important;
+    inset:auto!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:8px 0 16px!important;
+    padding:0!important;
+    font-size:clamp(17px,4.8vw,22px)!important;
+    line-height:1.18!important;
+    letter-spacing:-.015em!important;
+    text-align:left!important;
+    white-space:normal!important;
+    overflow:visible!important;
+  }
+  .single-project-experience-page.lang-ar .px-project-name{
+    text-align:right!important;
+    direction:rtl!important;
+    letter-spacing:0!important;
+  }
+  .single-project-experience-page .px-intro-mark{
+    position:relative!important;
+    inset:auto!important;
+    flex:1 1 auto!important;
+    width:100%!important;
+    min-height:clamp(310px,56svh,470px)!important;
+    max-height:500px!important;
+    margin:0!important;
+    display:grid!important;
+    place-items:center!important;
+    overflow:hidden!important;
+    transform:none!important;
+    touch-action:pan-y!important;
+  }
+  .single-project-experience-page .px-logo-host{
+    position:relative!important;
+    inset:auto!important;
+    width:min(88vw,520px)!important;
+    height:clamp(240px,46svh,390px)!important;
+    max-width:100%!important;
+    max-height:390px!important;
+    margin:auto!important;
+    pointer-events:none!important;
+    touch-action:pan-y!important;
+    transform:none!important;
+  }
+  .single-project-experience-page .px-logo-host .project-logo-drag,
+  .single-project-experience-page .px-logo-host .project-logo-rotor,
+  .single-project-experience-page .px-logo-host .project-logo-face{
+    width:100%!important;
+    height:100%!important;
+    max-width:100%!important;
+    max-height:100%!important;
+  }
+  .single-project-experience-page .px-logo-host .project-logo-face img{
+    display:block!important;
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+    object-position:center!important;
+  }
+  .single-project-experience-page .px-logo-grab-layer{display:none!important}
+
+  /* Keep top project chrome from colliding with content. */
+  .single-project-experience-page .px-topline{
+    position:relative!important;
+    inset:auto!important;
+    width:calc(100% - (var(--pm49-pad) * 2))!important;
+    margin:4px auto 0!important;
+    min-height:22px!important;
+    gap:12px!important;
+    white-space:normal!important;
+  }
+  .single-project-experience-page .px-progress{display:none!important}
+  .single-project-experience-page .px-hint{display:none!important}
+}
+
+/* Small phones */
+@media (max-width:390px){
+  .single-project-experience-page .px-step:not(.px-step-intro){padding-top:22px!important;padding-bottom:28px!important}
+  .single-project-experience-page .px-grid-title{font-size:clamp(27px,8.5vw,34px)!important}
+  .single-project-experience-page .px-grid-body{font-size:13px!important;line-height:1.7!important}
+  .single-project-experience-page.lang-ar .px-grid-body{line-height:1.86!important}
+  .single-project-experience-page .px-media-deck{height:clamp(220px,72vw,320px)!important;min-height:220px!important}
+  .single-project-experience-page .px-step-intro{min-height:560px!important}
+  .single-project-experience-page .px-intro-mark{min-height:340px!important}
+  .single-project-experience-page .px-logo-host{width:90vw!important;height:clamp(230px,44svh,330px)!important}
+}
+
+/* Very narrow phones */
+@media (max-width:340px){
+  .single-project-experience-page .px-grid-title{font-size:26px!important}
+  .single-project-experience-page .px-grid-body{font-size:12.7px!important}
+  .single-project-experience-page .px-logo-host{width:92vw!important;height:230px!important}
+}
+
+/* Short / landscape mobile screens */
+@media (max-width:760px) and (max-height:560px){
+  .single-project-experience-page .px-step-intro{min-height:520px!important}
+  .single-project-experience-page .px-intro-mark{min-height:300px!important}
+  .single-project-experience-page .px-logo-host{height:260px!important;max-height:260px!important}
+  .single-project-experience-page .px-media-deck{height:260px!important;max-height:260px!important}
+}

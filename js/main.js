@@ -159,8 +159,13 @@ function resolveIcon(img){
 const iconStage=document.getElementById("iconStage");
 
 const icons=[...document.querySelectorAll(".physics-icon")];
+const mobileLightMode=matchMedia("(max-width:760px)").matches;
 
-icons.forEach(resolveIcon);
+if(!mobileLightMode){
+  icons.forEach(resolveIcon);
+}else{
+  icons.forEach(el=>{el.removeAttribute("src");el.style.display="none"});
+}
 
 let iconPhysicsStarted=false;
 
@@ -168,6 +173,7 @@ let iconPhysicsStarted=false;
 
 function startAboutIconPhysics(){
 
+  if(mobileLightMode) return;
   if(iconPhysicsStarted || !icons.length) return;
 
   iconPhysicsStarted=true;

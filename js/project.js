@@ -564,7 +564,7 @@ function initProductViewers(scope=document){
     const rotor=viewer.querySelector(".px-product-rotor");
     if(!rotor)return;
 
-    viewer.style.touchAction="none";
+    viewer.style.touchAction=matchMedia("(max-width:760px)").matches?"pan-y":"none";
     viewer.style.userSelect="none";
     viewer.querySelectorAll("img").forEach(img=>{
       img.draggable=false;
@@ -576,7 +576,8 @@ function initProductViewers(scope=document){
       face.style.pointerEvents="none";
     });
 
-    const motion=viewer.dataset.motion||"interactive";
+    const mobileViewer=matchMedia("(max-width:760px)").matches;
+    const motion=mobileViewer?"auto":(viewer.dataset.motion||"interactive");
     let angle=0,target=0,vel=0;
     let down=false,pointerId=null,lx=0,lt=0,released=0;
 
@@ -641,8 +642,8 @@ function initProductViewers(scope=document){
     let autoT=0;
     (function animate(now){
       if(motion==="auto"){
-        autoT+=.008;
-        angle=(Math.sin(autoT)*.5+.5)*180;
+        if(mobileViewer){ angle+=.34; }
+        else { autoT+=.008; angle=(Math.sin(autoT)*.5+.5)*180; }
       }else if(motion==="hover"){
         angle+=(target-angle)*.085;
       }else if(motion==="interactive"&&!down){
