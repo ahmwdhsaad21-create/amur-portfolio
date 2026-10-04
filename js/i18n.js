@@ -113,27 +113,25 @@
   }
 
   function unpack(v){
-    let s=String(v??"").trim();
-    if(!s)return {ar:"",en:""};
+    const raw=String(v??"").trim();
+    if(!raw)return {ar:"",en:""};
 
-    // Historical builds saved the marker both before and after the JSON.
-    // Accept either format, and also accept a plain JSON object.
-    if(s.startsWith(PREFIX)) s=s.slice(PREFIX.length).trim();
-    if(s.endsWith(PREFIX)) s=s.slice(0,-PREFIX.length).trim();
+    const candidates=[raw];
+    if(raw.startsWith(PREFIX))candidates.unshift(raw.slice(PREFIX.length));
 
-    if(s.startsWith("{") && s.endsWith("}")){
+    for(const candidate of candidates){
+      const c=String(candidate||"").trim();
+      if(!(c.startsWith("{")&&c.endsWith("}")))continue;
       try{
-        const x=JSON.parse(s);
-        if(x && typeof x==="object"){
-          const ar=String(x.ar??"");
-          const en=String(x.en??"");
-          if(ar || en) return {ar,en};
+        const x=JSON.parse(c);
+        if(x&&typeof x==="object"&&("ar" in x||"en" in x)){
+          return {ar:String(x.ar||""),en:String(x.en||"")};
         }
       }catch(_){ }
     }
 
-    if(hasAr(s))return {ar:s,en:legacy(s,"en")};
-    return {ar:legacy(s,"ar"),en:s};
+    if(hasAr(raw))return {ar:raw,en:legacy(raw,"en")};
+    return {ar:legacy(raw,"ar"),en:raw};
   }
   function pack(ar,en){
     ar=String(ar||"").trim();en=String(en||"").trim();

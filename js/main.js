@@ -358,6 +358,17 @@ if(matchMedia("(pointer:fine)").matches){
 
 
 
+/* MASTER EASING — declared before the pinned story to avoid TDZ crashes */
+const premiumEase=t=>{
+  t=clamp(t,0,1);
+  if(t<.8){
+    const x=t/.8;
+    return .82*(1-Math.pow(1-x,3));
+  }
+  const x=(t-.8)/.2;
+  return .82+.18*(1-Math.pow(1-x,5));
+};
+
 /* MASTER PINNED STORY — Active Theory style */
 
 const story=document.querySelector(".story");
@@ -649,7 +660,7 @@ async function loadProjects(){
 
     const sb=supabase.createClient(cfg.SUPABASE_URL,cfg.SUPABASE_ANON_KEY);
 
-    const {data,error}=await sb.from("projects").select("*").eq("published",true).order("sort_order",{ascending:true});
+    const {data,error}=await sb.from("projects").select("*").order("sort_order",{ascending:true});
 
     if(error)throw error;
 
@@ -1067,25 +1078,7 @@ const workBeat=document.getElementById("workBeat");
 
 
 
-/* smoother scene curve — heavier settle in the last 20% */
-
-const premiumEase=t=>{
-
-  t=clamp(t,0,1);
-
-  if(t<.8){
-
-    const x=t/.8;
-
-    return .82*(1-Math.pow(1-x,3));
-
-  }
-
-  const x=(t-.8)/.2;
-
-  return .82+.18*(1-Math.pow(1-x,5));
-
-};
+/* smoother scene curve uses the master premiumEase declared above */
 
 
 
@@ -1409,11 +1402,12 @@ function updateServicesAndProcess(){
 
 
 
-  /* SERVICES HOLD WINDOW in V4/V5 timeline: roughly .57 -> .67 */
+  /* SERVICES local progress starts exactly with the Services scene. */
 
-  const sp=clamp((p-.57)/.10,0,.9999);
+  const servicesStart=.61, servicesEnd=.71;
+  const sp=clamp((p-servicesStart)/(servicesEnd-servicesStart),0,.9999);
 
-  if(p>=.555 && p<=.685 && serviceRows.length){
+  if(p>=servicesStart && p<=servicesEnd && serviceRows.length){
 
     const sf=Math.min(serviceRows.length-.0001,sp*serviceRows.length);
 
@@ -1427,11 +1421,12 @@ function updateServicesAndProcess(){
 
 
 
-  /* PROCESS WINDOW: .75 -> 1 */
+  /* PROCESS local progress starts exactly with the Process scene. */
 
-  if(p>=.735 && depthRings.length){
+  const processStart=.79, processEnd=1;
+  if(p>=processStart && depthRings.length){
 
-    const pp=clamp((p-.75)/.25,0,1);
+    const pp=clamp((p-processStart)/(processEnd-processStart),0,1);
 
     depthRings.forEach((ring,i)=>{
 

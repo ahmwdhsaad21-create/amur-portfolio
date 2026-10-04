@@ -186,7 +186,6 @@ async function loadProject(){
     .from("projects")
     .select("*")
     .eq("slug",slug)
-    .eq("published",true)
     .single();
 
   if(error){

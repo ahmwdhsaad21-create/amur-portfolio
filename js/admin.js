@@ -31,9 +31,11 @@
     SECTION_DEFS=Array.from({length:count},(_,i)=>{
       const stored=saved[i];
       if(stored){
+        const e=bi(stored.eyebrow);
+        const t=bi(stored.title);
         return {
           key:stored.section_key,
-          label:stored.eyebrow||stored.title||`قسم ${i+1}`,
+          label:e.ar||e.en||t.ar||t.en||`قسم ${i+1}`,
           eyebrow:stored.eyebrow||`قسم ${i+1}`,
           title:stored.title||`عنوان القسم ${i+1}`
         };
@@ -280,10 +282,22 @@
     row.className="image-row";
     row.dataset.id=img.id||"";
     row.innerHTML=`
+      <div class="image-thumb"><span>Preview</span></div>
       <input class="img-url" dir="ltr" value="${String(img.image_url||"").replaceAll('"',"&quot;")}" placeholder="رابط الصورة">
       <input class="img-sort" type="number" value="${img.sort_order||1}" title="الترتيب">
       <input class="img-caption" value="${String(img.caption||"").replaceAll('"',"&quot;")}" placeholder="وصف اختياري للصورة">
       <button type="button" class="xbtn">×</button>`;
+
+    const urlInput=row.querySelector(".img-url");
+    const thumb=row.querySelector(".image-thumb");
+    const refreshPreview=()=>{
+      const url=String(urlInput?.value||"").trim();
+      thumb.innerHTML=url
+        ? `<img src="${url.replaceAll('"','&quot;')}" alt="معاينة الصورة">`
+        : '<span>Preview</span>';
+    };
+    urlInput?.addEventListener("input",refreshPreview);
+    refreshPreview();
     row.querySelector("button").onclick=async()=>{
       if(row.dataset.id){
         const {error}=await sb.from("project_images").delete().eq("id",row.dataset.id);

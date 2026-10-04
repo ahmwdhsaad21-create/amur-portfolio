@@ -12,7 +12,7 @@ html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-fam
 .process-scene{display:grid;grid-template-columns:.76fr 1.24fr;grid-template-areas:"k k" "copy stack" "line line";gap:18px 70px;align-items:center}.process-scene .scene-kicker{grid-area:k}.process-copy{grid-area:copy}.process-stack{grid-area:stack;position:relative;min-height:410px}.process-card{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:scale(.68) translateZ(-160px);filter:blur(12px);pointer-events:none;will-change:transform,opacity,filter}.process-card.active{pointer-events:auto}.process-card small{direction:ltr;color:var(--accent);font:10px "Manrope";letter-spacing:.16em}.process-card h3{font-family:"Changa";font-size:clamp(44px,4.5vw,78px);line-height:1.2;margin:20px 0}.process-card p{color:#9a9d99;font-size:15px;line-height:2;max-width:620px}.timeline{grid-area:line;height:1px;background:rgba(255,255,255,.08);overflow:hidden}.timeline i{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--accent),#fff)}
 .contact{min-height:100vh;display:flex;align-items:center;padding:120px 0 50px}.contact-inner{position:relative}.contact h2{margin:36px 0 22px}.contact p{color:#a2a5a1;font-size:16px;line-height:1.95;max-width:700px}.contact .line-link{margin-top:28px}.giant{direction:ltr;margin-top:80px;color:rgba(255,255,255,.035);font:600 clamp(130px,19vw,320px) "Cinzel";line-height:.72}.footer-row{direction:ltr;display:flex;justify-content:space-between;gap:20px;color:#656865;font:9px "Manrope";letter-spacing:.14em}footer{padding:26px 0;border-top:1px solid var(--line)}
 .icon-stage{position:absolute;inset:0 0 auto;width:100%;height:100vh;overflow:hidden;z-index:35;pointer-events:none}.physics-icon{position:absolute;top:0;left:0;width:116px;height:116px;object-fit:contain;opacity:1;filter:drop-shadow(0 18px 28px rgba(0,0,0,.56))}.magnetic{will-change:transform}
-@media(max-width:1050px){.shell{width:min(var(--shell),calc(100% - 42px))}.scene-grid,.about-layout,.process-scene{grid-template-columns:1fr}.scene-grid{gap:20px}.hero-copy{order:1}.hero-art{order:2;min-height:420px}.logo-float{width:min(620px,82vw)}.about-layout{gap:10px}.portrait-zone{min-height:430px}.portrait{width:min(580px,82vw)}.process-scene{grid-template-areas:"k" "copy" "stack" "line"}.process-stack{min-height:340px}.story{height:940vh}}
+@media(max-width:1050px){.shell{width:min(var(--shell),calc(100% - 42px))}.scene-grid,.about-layout,.process-scene{grid-template-columns:1fr}.scene-grid{gap:20px}.hero-copy{order:1}.hero-art{order:2;min-height:420px}.logo-float{width:min(620px,82vw)}.about-layout{gap:10px}.portrait-zone{min-height:430px}.portrait{width:min(580px,82vw)}.process-scene{grid-template-areas:"k" "copy" "stack" "line"}.process-stack{min-height:340px}.story{height:650vh}}
 @media(max-width:700px){.shell{width:min(var(--shell),calc(100% - 28px))}.nav{grid-template-columns:auto 1fr}.nav-caption{display:none}.nav-links{justify-self:end;gap:12px;font-size:10px}.nav-links a:nth-child(3),.nav-links a:nth-child(4){display:none}.brand{font-size:18px}.hero-copy h1{font-size:clamp(50px,13vw,70px)}.hero-copy h1 span{white-space:normal}.hero-copy p{font-size:14px}.hero-art{min-height:340px}.about-name h2{font-size:clamp(44px,13vw,66px)}.portrait-zone{min-height:360px}.work-head{grid-template-columns:1fr;gap:18px}.case-strip{grid-template-columns:.9fr 1.1fr}.case-media{height:90px}.service-row{grid-template-columns:40px 1fr}.service-row p{grid-column:2}.process-stack{min-height:310px}.process-card h3{font-size:clamp(38px,11vw,58px)}.physics-icon{width:74px;height:74px}.physics-icon:nth-child(5),.physics-icon:nth-child(6){display:none}.footer-row{flex-direction:column}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.logo-float,.scroll-cue i{animation:none}}
 
@@ -175,7 +175,7 @@ body[data-scene="4"]{--mood-cool:.10;--mood-warm:.025}
    MOBILE TUNING
    =============================== */
 @media(max-width:700px){
-  .story{height:980vh}
+  .story{height:670vh}
   .scene{
     padding-top:66px;
   }
@@ -236,9 +236,9 @@ body[data-scene="4"]{--mood-cool:.10;--mood-warm:.025}
 }
 
 /* ===== V3: give scenes, especially WORK, more breathing room ===== */
-.story{height:1220vh}
-@media(max-width:1050px){.story{height:1280vh}}
-@media(max-width:700px){.story{height:1340vh}}
+.story{height:620vh}
+@media(max-width:1050px){.story{height:650vh}}
+@media(max-width:700px){.story{height:690vh}}
 
 
 /* ===============================
@@ -6311,60 +6311,546 @@ body.lang-ar .service-row h3{
   body.lang-en .process-card h3,body.lang-ar .process-card h3{font-size:clamp(28px,7.8vw,40px)!important;white-space:normal!important}
   .contact p{font-size:12px!important;max-width:94%!important}
 }
+/* AMUR V35 — explicit public typography layer. Loaded LAST on purpose. */
+:root{
+  --v35-en:"Inter Tight","Manrope",Arial,sans-serif;
+  --v35-ar:"IBM Plex Sans Arabic","Noto Kufi Arabic",Arial,sans-serif;
+}
 
+/* Base public typography */
+body.lang-en{font-family:var(--v35-en)!important}
+body.lang-ar{font-family:var(--v35-ar)!important}
+
+/* EN: thin editorial display, not blocky */
+body.lang-en .hero-copy h1,
+body.lang-en .about-copy h3,
+body.lang-en .work-head h2,
+body.lang-en .services-head h2,
+body.lang-en .process-copy h2,
+body.lang-en .process-card h3,
+body.lang-en .contact-copy h2{
+  font-family:var(--v35-en)!important;
+  font-weight:300!important;
+  letter-spacing:-.055em!important;
+  text-transform:none!important;
+  font-variation-settings:"wght" 300!important;
+  text-wrap:balance!important;
+}
+
+body.lang-en .hero-copy h1{
+  font-size:clamp(54px,4.15vw,78px)!important;
+  line-height:1.03!important;
+  max-width:900px!important;
+  margin-bottom:28px!important;
+}
+body.lang-en .hero-copy h1 span{white-space:nowrap!important}
+body.lang-en .hero-copy p{
+  font-family:var(--v35-en)!important;
+  font-weight:300!important;
+  font-size:15px!important;
+  line-height:1.65!important;
+  max-width:690px!important;
+  letter-spacing:-.012em!important;
+}
+
+body.lang-en .work-head h2,
+body.lang-en .services-head h2,
+body.lang-en .process-copy h2,
+body.lang-en .contact-copy h2{
+  font-size:clamp(42px,3vw,58px)!important;
+  line-height:1.06!important;
+  max-width:none!important;
+  white-space:nowrap!important;
+  margin-top:0!important;
+}
+
+body.lang-en .about-copy h3{
+  font-size:clamp(34px,2.7vw,52px)!important;
+  line-height:1.16!important;
+  max-width:900px!important;
+}
+
+body.lang-en .process-card h3{
+  font-size:clamp(34px,2.55vw,48px)!important;
+  line-height:1.08!important;
+  max-width:820px!important;
+}
+
+/* Small copy: cleaner rhythm */
+body.lang-en .nav-links,
+body.lang-en .work-head p,
+body.lang-en .service-row p,
+body.lang-en .process-copy p,
+body.lang-en .process-card p,
+body.lang-en .contact-copy p,
+body.lang-en .line-link{
+  font-family:var(--v35-en)!important;
+  font-weight:300!important;
+  letter-spacing:-.01em!important;
+}
+
+/* Service labels also lighter */
+body.lang-en .service-row h3{
+  font-family:var(--v35-en)!important;
+  font-weight:300!important;
+  letter-spacing:-.035em!important;
+  text-transform:none!important;
+}
+
+/* Arabic: elegant and lighter, without over-bold Changa feel */
+body.lang-ar .hero-copy h1,
+body.lang-ar .about-copy h3,
+body.lang-ar .work-head h2,
+body.lang-ar .services-head h2,
+body.lang-ar .process-copy h2,
+body.lang-ar .process-card h3,
+body.lang-ar .contact-copy h2,
+body.lang-ar .service-row h3{
+  font-family:var(--v35-ar)!important;
+  font-weight:400!important;
+  letter-spacing:-.025em!important;
+  text-transform:none!important;
+}
+body.lang-ar .hero-copy h1{font-size:clamp(52px,4.25vw,80px)!important;line-height:1.18!important}
+body.lang-ar .work-head h2,
+body.lang-ar .services-head h2,
+body.lang-ar .process-copy h2,
+body.lang-ar .contact-copy h2{font-size:clamp(40px,3vw,58px)!important;line-height:1.25!important;max-width:none!important}
+
+/* Desktop stage: raise content and give headings room horizontally */
+@media(min-width:1100px){
+  .scene>.shell{transform:translateY(-8vh)!important}
+  .scene-hero>.shell{transform:translateY(-6vh)!important}
+  .scene-services>.shell,.scene-process>.shell{transform:translateY(-9vh)!important}
+  .contact-inner{transform:translateY(-8vh)!important}
+
+  .scene-grid.hero-grid{grid-template-columns:.9fr 1.1fr!important;gap:64px!important}
+  .hero-copy{min-width:0!important}
+  .services-head,.process-copy,.contact-copy{max-width:none!important;width:100%!important}
+  .process-scene{grid-template-columns:.92fr 1.08fr!important;gap:16px 62px!important}
+  .scene-work .work-head{grid-template-columns:1.45fr .55fr!important;gap:42px!important}
+}
+
+/* Project page gets the same lighter public type */
+body.lang-en.single-project-experience-page,
+body.lang-en .single-project-experience-page{font-family:var(--v35-en)!important}
+.single-project-experience-page .px-title,
+.single-project-experience-page .px-copy h2,
+.single-project-experience-page .px-products-copy h2{
+  font-family:var(--v35-en)!important;
+  font-weight:300!important;
+  letter-spacing:-.045em!important;
+}
+html[dir="rtl"] .single-project-experience-page .px-title,
+html[dir="rtl"] .single-project-experience-page .px-copy h2,
+html[dir="rtl"] .single-project-experience-page .px-products-copy h2{
+  font-family:var(--v35-ar)!important;
+  font-weight:400!important;
+  letter-spacing:-.02em!important;
+}
+
+/* Mobile: natural wrapping, no giant stacked typography */
+@media(max-width:760px){
+  .scene>.shell,.scene-hero>.shell,.scene-services>.shell,.scene-process>.shell,.contact-inner{transform:none!important}
+
+  body.lang-en .hero-copy h1{
+    font-size:clamp(36px,9.5vw,48px)!important;
+    line-height:1.05!important;
+    letter-spacing:-.045em!important;
+  }
+  body.lang-en .hero-copy h1 span{white-space:normal!important}
+
+  body.lang-en .work-head h2,
+  body.lang-en .services-head h2,
+  body.lang-en .process-copy h2,
+  body.lang-en .contact-copy h2,
+  body.lang-ar .work-head h2,
+  body.lang-ar .services-head h2,
+  body.lang-ar .process-copy h2,
+  body.lang-ar .contact-copy h2{
+    white-space:normal!important;
+    font-size:clamp(28px,7.7vw,40px)!important;
+    line-height:1.12!important;
+    max-width:100%!important;
+  }
+
+  body.lang-en .about-copy h3,
+  body.lang-en .process-card h3,
+  body.lang-ar .about-copy h3,
+  body.lang-ar .process-card h3{
+    font-size:clamp(27px,7vw,38px)!important;
+    line-height:1.18!important;
+  }
+
+  .scene-work .work-head,.process-scene{grid-template-columns:1fr!important}
+  .hero-copy p,.work-head p,.process-copy p,.process-card p,.contact-copy p{font-size:12px!important;line-height:1.65!important}
+}
 
 /* ==========================================================
-   TARGETED REQUEST FIX — SERVICES / PROCESS / SCROLL SPACE
-   Only the requested behavior is changed below.
+   AMUR CLEAN REBUILD V1 — single responsive system
+   Same pinned-story experience on desktop and mobile.
    ========================================================== */
-.story{height:1360vh!important}
+html,body{max-width:100%;overflow-x:hidden}
+img{max-width:100%;height:auto}
 
-/* Services gets enough room for all 4 internal steps. */
-.scene-services .services-scene{width:min(1500px,calc(100% - 48px));max-width:none}
-.services-stage{min-height:360px}
-.service-row{min-width:0}
+@media (max-width:760px){
+  :root{--mobile-gutter:18px}
+  .shell{width:calc(100% - (var(--mobile-gutter)*2))!important;max-width:none!important}
+  .site-header{padding:10px 0!important}
+  .nav{display:flex!important;align-items:center!important;gap:10px!important;min-width:0}
+  .brand{flex:0 0 auto}
+  .nav-links{display:flex!important;flex:1 1 auto!important;min-width:0!important;overflow-x:auto!important;overflow-y:hidden!important;white-space:nowrap!important;gap:14px!important;scrollbar-width:none!important}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-meta{flex:0 0 auto!important;margin-inline-start:auto!important}
+  .story,.story-stage,.scene{width:100%;max-width:100%}
+  .story-stage,.scene{height:100svh!important;min-height:100svh!important}
+  .scene{overflow:hidden!important}
+  .scene>.shell{height:100%!important;max-height:none!important;overflow:hidden!important}
 
-/* Process headline and current step live in independent columns. */
-.scene-process .process-scene{
-  grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr)!important;
-  grid-template-areas:"k k" "copy stack" "line line"!important;
-  column-gap:clamp(72px,7vw,140px)!important;
-  row-gap:22px!important;
+  /* Hero keeps the same two-part composition, scaled to phone width. */
+  .hero-grid{display:grid!important;grid-template-columns:42% 58%!important;align-items:center!important;gap:0!important;padding-top:70px!important;height:100%!important}
+  .hero-art{min-width:0!important;min-height:0!important;height:62svh!important;display:flex!important;align-items:center!important;justify-content:center!important}
+  .logo-float{width:150%!important;max-width:none!important;transform-origin:center!important}
+  .hero-copy{min-width:0!important;padding-inline-start:8px!important}
+  .hero-copy h1{font-size:clamp(34px,9.8vw,50px)!important;line-height:1.02!important;max-width:100%!important;margin:0!important}
+  .hero-copy p{font-size:10.5px!important;line-height:1.65!important;max-width:100%!important;margin-top:12px!important}
+  .hero-actions{margin-top:14px!important;gap:10px!important;flex-wrap:wrap!important}
+
+  /* About remains one scene; copy + portrait share the viewport. */
+  .about-scene{height:100%!important;padding-top:76px!important;display:grid!important;grid-template-rows:auto 1fr!important;overflow:hidden!important}
+  .about-name{margin-bottom:8px!important}
+  .about-name h2{font-size:clamp(30px,8vw,42px)!important}
+  .about-layout{display:grid!important;grid-template-columns:56% 44%!important;gap:8px!important;align-items:center!important;min-height:0!important}
+  .about-copy{min-width:0!important;align-self:center!important}
+  .about-copy h3{font-size:clamp(20px,5.6vw,28px)!important;line-height:1.25!important;margin-bottom:10px!important}
+  .about-points p{font-size:9.5px!important;line-height:1.5!important;padding:6px 0!important}
+  .signature{margin-top:8px!important}.signature strong{font-size:18px!important}
+  .portrait-zone{min-height:0!important;height:58svh!important;display:flex!important;align-items:flex-end!important;justify-content:center!important}
+  .portrait{width:135%!important;max-width:none!important;max-height:58svh!important;object-fit:contain!important}
+
+  /* Work remains in the pinned work scene; cards swipe horizontally inside it. */
+  .work-scene{height:100%!important;padding-top:78px!important;overflow:hidden!important}
+  .scene-work .work-head{display:grid!important;grid-template-columns:1fr!important;gap:5px!important;margin-bottom:10px!important}
+  .scene-work .work-head h2{font-size:clamp(28px,7.5vw,40px)!important;line-height:1.04!important}
+  .scene-work .work-head p{font-size:9.5px!important;line-height:1.45!important;max-width:94%!important}
+  .scene-work .work-list{width:calc(100vw - 18px)!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory!important;-webkit-overflow-scrolling:touch!important;scrollbar-width:none!important}
+  .scene-work .work-list::-webkit-scrollbar{display:none}
+  .work-horizontal-track{display:flex!important;width:max-content!important;gap:10px!important;padding:0 18px 8px 0!important}
+  .work-logo-scene,.work-logo-scene.is-active,.work-logo-scene:not(.is-active){flex:0 0 78vw!important;width:78vw!important;min-width:78vw!important;height:52svh!important;max-height:430px!important;scroll-snap-align:center!important;opacity:1!important;transform:none!important;filter:none!important}
+  .work-logo-center .project-logo-drag{height:25svh!important;max-height:220px!important;pointer-events:none!important}
+  .work-logo-bottom h3{font-size:20px!important}.work-logo-bottom p{font-size:8.5px!important}
+
+  /* Services and process keep their desktop scene mechanics, only typography/layout scales. */
+  .services-scene,.process-scene{height:100%!important;padding-top:78px!important;overflow:hidden!important}
+  .services-head h2,.process-copy h2,.contact h2{font-size:clamp(28px,7.8vw,42px)!important;line-height:1.08!important}
+  .services-head{margin-bottom:8px!important}
+  .service-row{grid-template-columns:28px 1fr!important;gap:6px 8px!important;padding:8px 0!important}
+  .service-row h3{font-size:17px!important}.service-row p{grid-column:2!important;font-size:9px!important;line-height:1.42!important}
+  .process-scene{display:grid!important;grid-template-columns:1fr!important;grid-template-areas:"k" "copy" "stack" "line"!important;gap:6px!important}
+  .process-copy p{font-size:9.5px!important;line-height:1.5!important;max-width:95%!important}
+  .process-stack{min-height:0!important;height:44svh!important}
+  .process-card{padding:16px!important}.process-card h3{font-size:clamp(25px,7vw,36px)!important;line-height:1.05!important}.process-card p{font-size:9.5px!important;line-height:1.5!important}
+
+  .contact{min-height:100svh!important;height:100svh!important;padding:82px 0 24px!important;overflow:hidden!important}
+  .contact-inner{height:100%!important;overflow:hidden!important}
+  .contact p{font-size:10px!important;line-height:1.55!important;max-width:92%!important}
+  .contact-signature{margin-top:18px!important}.giant{font-size:28vw!important}
+
+  .mouse-field{display:none!important}
+  .magnetic{transform:none!important}
+}
+
+
+
+
+/* =========================================================
+   FOCUSED V2 — deterministic story boot
+   Before JS paints: only Hero is visible. After first paint:
+   main.js is the single owner of scene visibility.
+   ========================================================= */
+html:not([data-story-ready="1"]) .scene:not(.scene-hero){
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+html:not([data-story-ready="1"]) .scene-hero{
+  opacity:1!important;
+  visibility:visible!important;
+  transform:scale(1) translateZ(0)!important;
+  filter:none!important;
+  pointer-events:auto!important;
+}
+html[data-story-ready="1"] .scene{
+  transition:none;
+}
+
+
+/* V4 NATURAL SCROLL — authoritative timeline length.
+   One scene transition now takes roughly one viewport of normal wheel/trackpad scrolling,
+   instead of requiring a long fast fling through a 12–13 screen story. */
+.story{height:620vh!important}
+@media(max-width:1050px){.story{height:650vh!important}}
+@media(max-width:700px){.story{height:690vh!important}}
+
+
+/* V5 — single pixel-based scroll engine. JS owns the exact travel distance. */
+.story{height:var(--story-height,4200px)!important;}
+.story-stage{position:sticky;top:0;height:100svh;min-height:100svh;overflow:hidden;}
+.scene{height:100svh;min-height:100svh;}
+
+
+/* V6 — readable pinned transitions. JS still owns opacity/scale; CSS never re-blurs a whole scene. */
+html[data-story-ready="1"] .scene{filter:none!important;}
+
+
+/* =========================================================
+   AMUR MASTER SCROLL CONTROLLER — authoritative layout only
+   JS owns the exact story height and every scene visibility state.
+   No legacy vh rule may compete with it.
+   ========================================================= */
+.story{height:var(--story-height,4200px)!important;}
+.story-stage{position:sticky!important;top:0!important;height:100svh!important;min-height:100svh!important;overflow:hidden!important;}
+.scene{height:100svh!important;min-height:100svh!important;transition:none!important;filter:none;}
+html[data-story-ready="1"] .scene{transition:none!important;}
+.scene-work .work-head,.scene-work .work-list{filter:none;}
+
+/* =========================================================
+   V9 SCENE SLOTS — one safe viewport frame per scene
+   Every scene owns the same bounded canvas below the fixed header.
+   No scene content is allowed to escape into another scene.
+   ========================================================= */
+:root{
+  --amur-header-h:88px;
+  --amur-scene-pad-x:clamp(26px,4vw,72px);
+  --amur-scene-pad-y:clamp(18px,2.2vh,28px);
+}
+
+.story-stage{
+  top:var(--amur-header-h)!important;
+  height:calc(100svh - var(--amur-header-h))!important;
+  min-height:calc(100svh - var(--amur-header-h))!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+}
+.scene{
+  inset:0!important;
+  height:100%!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  contain:layout paint!important;
+  align-items:stretch!important;
+}
+.scene>.shell{
+  width:min(var(--shell),calc(100% - (var(--amur-scene-pad-x)*2)))!important;
+  height:100%!important;
+  min-height:0!important;
+  margin:auto!important;
+  padding:var(--amur-scene-pad-y) 0!important;
+  transform:none!important;
+  overflow:hidden!important;
+  position:relative!important;
+  z-index:2!important;
+}
+
+/* HERO — fixed two-column frame */
+.scene-hero>.hero-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)!important;
+  gap:clamp(36px,5vw,74px)!important;
   align-items:center!important;
 }
-.scene-process .process-copy{grid-area:copy;min-width:0;max-width:560px!important;width:100%!important;align-self:center}
-.scene-process .process-copy h2{max-width:560px!important;white-space:normal!important}
-.scene-process .process-stack{grid-area:stack;min-width:0;min-height:430px!important;width:100%;position:relative}
-.scene-process .process-card{padding-inline:clamp(0px,1.5vw,24px);min-width:0}
-.scene-process .process-card h3{max-width:100%!important;white-space:normal!important}
-.scene-process .timeline{grid-area:line}
+.scene-hero .hero-art{
+  min-height:0!important;
+  height:100%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+}
+.scene-hero .logo-float{
+  width:min(54vw,660px)!important;
+  max-height:calc(100svh - var(--amur-header-h) - 70px)!important;
+}
+.scene-hero .hero-copy{min-width:0!important;align-self:center!important;}
 
-@media(max-width:1050px){
-  .story{height:1480vh!important}
-  .scene-process .process-scene{
-    grid-template-columns:1fr!important;
-    grid-template-areas:"k" "copy" "stack" "line"!important;
-    gap:16px!important;
-  }
-  .scene-process .process-copy,.scene-process .process-copy h2{max-width:900px!important}
-  .scene-process .process-stack{min-height:350px!important}
+/* ABOUT — header block + one bounded two-column body */
+.scene-about .about-scene{
+  display:grid!important;
+  grid-template-rows:auto auto minmax(0,1fr)!important;
+  gap:0!important;
+  padding-top:var(--amur-scene-pad-y)!important;
+}
+.scene-about .scene-kicker{margin-bottom:10px!important;}
+.scene-about .about-name{margin-bottom:12px!important;}
+.scene-about .about-name h2{font-size:clamp(40px,4.4vw,72px)!important;line-height:1!important;}
+.scene-about .about-name p{margin-top:8px!important;}
+.scene-about .about-layout{
+  min-height:0!important;
+  height:100%!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)!important;
+  gap:clamp(26px,4vw,58px)!important;
+  align-items:center!important;
+  overflow:hidden!important;
+}
+.scene-about .about-copy{
+  min-width:0!important;
+  max-height:100%!important;
+  overflow:hidden!important;
+  align-self:center!important;
+}
+.scene-about .about-copy h3{
+  font-size:clamp(26px,2.3vw,40px)!important;
+  line-height:1.35!important;
+  margin-bottom:18px!important;
+}
+.scene-about .about-points p{padding:11px 0!important;line-height:1.6!important;}
+.scene-about .signature{margin-top:16px!important;}
+.scene-about .portrait-zone{
+  min-height:0!important;
+  height:100%!important;
+  max-height:100%!important;
+  overflow:hidden!important;
+  display:flex!important;
+  align-items:flex-end!important;
+  justify-content:center!important;
+}
+.scene-about .portrait{
+  width:min(100%,560px)!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
 }
 
-@media(max-width:700px){
-  .story{height:1620vh!important}
-  .story-stage,.scene{height:100svh;min-height:100svh}
-  .scene>.shell{width:calc(100% - 28px)!important;max-height:calc(100svh - 76px);overflow:visible}
-  .about-scene,.work-scene,.services-scene,.process-scene{padding-top:78px!important}
-  .scene-services .services-scene{width:calc(100% - 28px)!important}
-  .services-head{margin-bottom:12px!important}
-  .services-stage{min-height:330px!important}
-  .service-row{grid-template-columns:34px 1fr!important;gap:8px 12px!important;padding:14px 0!important}
-  .service-row p{grid-column:2!important;font-size:11px!important;line-height:1.65!important}
-  .scene-process .process-scene{gap:10px!important}
-  .scene-process .process-copy{max-width:100%!important}
-  .scene-process .process-copy h2{max-width:100%!important;font-size:clamp(30px,8.5vw,42px)!important}
-  .scene-process .process-stack{min-height:300px!important}
-  .scene-process .process-card{padding:0!important}
-  .scene-process .process-card h3{font-size:clamp(28px,8vw,40px)!important;line-height:1.08!important}
-  .scene-process .process-card p{font-size:11px!important;line-height:1.65!important}
+/* WORK — heading gets its own lane, projects get the remaining lane */
+.scene-work .work-scene{
+  display:grid!important;
+  grid-template-rows:auto auto auto minmax(0,1fr)!important;
+  gap:0!important;
+  padding-top:var(--amur-scene-pad-y)!important;
+}
+.scene-work .scene-kicker{margin-bottom:10px!important;}
+.scene-work .work-head{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr)!important;
+  gap:clamp(24px,4vw,52px)!important;
+  align-items:end!important;
+  margin-bottom:12px!important;
+  min-height:0!important;
+}
+.scene-work .work-head h2{font-size:clamp(34px,3.6vw,58px)!important;line-height:1.08!important;}
+.scene-work .work-head p{font-size:12.5px!important;line-height:1.65!important;}
+.scene-work .work-beat{margin-bottom:8px!important;}
+.scene-work .work-list{
+  min-height:0!important;
+  height:100%!important;
+  overflow:hidden!important;
+  position:relative!important;
+}
+.scene-work .work-horizontal-track{
+  height:100%!important;
+  max-height:100%!important;
+}
+.scene-work .work-logo-scene{
+  height:100%!important;
+  max-height:100%!important;
+  overflow:hidden!important;
+}
+
+/* SERVICES — fixed title lane + rows lane */
+.scene-services .services-scene{
+  display:grid!important;
+  grid-template-rows:auto auto minmax(0,1fr)!important;
+  gap:0!important;
+  padding-top:var(--amur-scene-pad-y)!important;
+}
+.scene-services .scene-kicker{margin-bottom:10px!important;}
+.scene-services .services-head{margin-bottom:12px!important;}
+.scene-services .services-head h2{font-size:clamp(36px,3.7vw,60px)!important;line-height:1.08!important;}
+.scene-services .services-stage{
+  min-height:0!important;
+  height:100%!important;
+  overflow:hidden!important;
+}
+.scene-services .services{height:100%!important;display:grid!important;grid-template-rows:repeat(4,minmax(0,1fr))!important;}
+.scene-services .service-row{
+  min-height:0!important;
+  padding:10px 0!important;
+  overflow:hidden!important;
+}
+.scene-services .service-row h3{font-size:clamp(20px,1.9vw,32px)!important;}
+.scene-services .service-row p{font-size:12px!important;line-height:1.55!important;}
+
+/* PROCESS — fixed copy lane + card lane + timeline */
+.scene-process .process-scene{
+  height:100%!important;
+  min-height:0!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr)!important;
+  grid-template-rows:auto minmax(0,1fr) auto!important;
+  grid-template-areas:"k k" "copy stack" "line line"!important;
+  gap:12px clamp(32px,5vw,72px)!important;
+  padding-top:var(--amur-scene-pad-y)!important;
+  overflow:hidden!important;
+}
+.scene-process .scene-kicker{margin-bottom:0!important;}
+.scene-process .process-copy{align-self:center!important;min-width:0!important;}
+.scene-process .process-copy h2{font-size:clamp(34px,3.5vw,58px)!important;line-height:1.08!important;}
+.scene-process .process-copy p{font-size:12.5px!important;line-height:1.65!important;}
+.scene-process .process-stack{
+  min-height:0!important;
+  height:100%!important;
+  overflow:hidden!important;
+}
+.scene-process .process-card{overflow:hidden!important;padding:8px 0!important;}
+.scene-process .process-card h3{font-size:clamp(34px,3.7vw,62px)!important;line-height:1.08!important;margin:14px 0!important;}
+.scene-process .process-card p{font-size:13px!important;line-height:1.65!important;}
+.scene-process .timeline{align-self:end!important;}
+
+/* During scene changes there is never a readable overlap of two full sections. */
+.scene{z-index:0!important;}
+.scene.active{z-index:2!important;}
+
+@media(max-width:900px){
+  :root{--amur-header-h:70px;--amur-scene-pad-x:18px;--amur-scene-pad-y:12px;}
+  .site-header{min-height:var(--amur-header-h)!important;}
+  .scene>.shell{width:calc(100% - 36px)!important;}
+
+  .scene-hero>.hero-grid{
+    grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;
+    gap:10px!important;
+  }
+  .scene-hero .logo-float{width:145%!important;max-width:none!important;}
+  .scene-hero .hero-copy h1{font-size:clamp(30px,8.6vw,44px)!important;}
+  .scene-hero .hero-copy p{font-size:10px!important;line-height:1.55!important;}
+
+  .scene-about .about-name h2{font-size:clamp(26px,7vw,38px)!important;}
+  .scene-about .about-layout{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)!important;gap:10px!important;}
+  .scene-about .about-copy h3{font-size:clamp(17px,4.8vw,24px)!important;line-height:1.22!important;margin-bottom:8px!important;}
+  .scene-about .about-points p{font-size:8.8px!important;line-height:1.35!important;padding:5px 0!important;grid-template-columns:24px 1fr!important;gap:8px!important;}
+  .scene-about .signature{margin-top:6px!important;gap:4px!important;}
+  .scene-about .signature strong{font-size:15px!important;}
+
+  .scene-work .work-head{grid-template-columns:1fr!important;gap:4px!important;}
+  .scene-work .work-head h2{font-size:clamp(24px,7vw,36px)!important;}
+  .scene-work .work-head p{font-size:9px!important;}
+  .scene-work .work-list{overflow-x:auto!important;overflow-y:hidden!important;}
+  .scene-work .work-horizontal-track{display:flex!important;width:max-content!important;gap:10px!important;}
+  .scene-work .work-logo-scene{flex:0 0 76vw!important;width:76vw!important;}
+
+  .scene-services .services-head h2{font-size:clamp(25px,7vw,38px)!important;}
+  .scene-services .service-row{grid-template-columns:24px 1fr!important;gap:4px 8px!important;padding:5px 0!important;}
+  .scene-services .service-row h3{font-size:15px!important;}
+  .scene-services .service-row p{grid-column:2!important;font-size:8.5px!important;line-height:1.35!important;}
+
+  .scene-process .process-scene{
+    grid-template-columns:1fr!important;
+    grid-template-rows:auto auto minmax(0,1fr) auto!important;
+    grid-template-areas:"k" "copy" "stack" "line"!important;
+    gap:6px!important;
+  }
+  .scene-process .process-copy h2{font-size:clamp(24px,7vw,36px)!important;}
+  .scene-process .process-copy p{font-size:9px!important;}
+  .scene-process .process-card h3{font-size:clamp(25px,7vw,38px)!important;}
+  .scene-process .process-card p{font-size:9px!important;}
 }

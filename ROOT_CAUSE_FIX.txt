@@ -1,0 +1,7 @@
+AMUR ROOT CAUSE EXACT FIX
+
+Fixed the actual startup crash in js/main.js:
+updateStory() used premiumEase before its const declaration. Because const is in the temporal dead zone, even typeof premiumEase throws ReferenceError. That stopped JavaScript execution before loadProjects(), leaving scenes at CSS opacity:0 and preventing projects from loading.
+
+No layout, admin, Supabase schema, project data, or design changes were made.
+Keep your existing js/config.js and assets folder.

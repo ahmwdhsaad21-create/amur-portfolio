@@ -1,0 +1,8 @@
+AMUR V42 SAME WEB MOBILE
+- Base restored to V37 clean project system.
+- No /mobile redirect and no separate mobile app.
+- Desktop HTML/JS/effects/icons are preserved.
+- Mobile uses the same pinned scroll engine and same project engine.
+- Only a final responsive stylesheet was added: css/mobile-parity-v42.css
+- Desktop rules are untouched because overrides only run under max-width:760px.
+- Keep your existing js/config.js when replacing files.

@@ -1,0 +1,1 @@
+AMUR V37: project pages fixed. Robust bilingual legacy lookup, no pending placeholder, clean project typography/layout, missing fitFixedCopy fixed, responsive project mechanics. Keep your existing js/config.js.

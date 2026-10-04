@@ -1,0 +1,233 @@
+/* AMUR — responsive parity layer
+   Loaded last on purpose. It preserves the desktop art direction and only
+   allocates safe, device-aware space for every scene and project step. */
+
+:root{
+  --amur-header-h:72px;
+  --amur-safe-x:clamp(16px,4vw,56px);
+  --amur-safe-bottom:max(16px,env(safe-area-inset-bottom));
+}
+
+html,body{max-width:100%;overflow-x:hidden}
+body{min-width:320px}
+img,svg,video,canvas{max-width:100%}
+
+/* Every story scene owns one viewport. Content is kept inside its scene. */
+.story-stage,
+.scene{
+  height:100svh!important;
+  min-height:100svh!important;
+}
+.scene{
+  padding-top:var(--amur-header-h);
+  padding-bottom:var(--amur-safe-bottom);
+  overflow:hidden!important;
+  isolation:isolate;
+}
+.scene>.shell{
+  width:min(1540px,calc(100% - (var(--amur-safe-x) * 2)))!important;
+  max-height:calc(100svh - var(--amur-header-h) - var(--amur-safe-bottom))!important;
+  min-height:0!important;
+  overflow:hidden!important;
+}
+
+/* Desktop / large laptop: keep the original composition, only make it safe. */
+@media (min-width:1101px){
+  .scene-hero>.shell{height:min(820px,calc(100svh - 110px))!important}
+  .scene-about>.shell{height:min(780px,calc(100svh - 112px))!important}
+  .scene-work>.shell{height:min(810px,calc(100svh - 106px))!important}
+  .scene-services>.shell{height:min(790px,calc(100svh - 108px))!important}
+  .scene-process>.shell{height:min(790px,calc(100svh - 108px))!important}
+  .hero-art{min-height:0!important;height:100%!important}
+  .about-layout,.process-scene{min-height:0!important}
+  .scene-work .work-list{max-height:58vh!important}
+}
+
+/* Tablet / small laptop — same design language, tighter spacing. */
+@media (min-width:761px) and (max-width:1100px){
+  :root{--amur-header-h:68px;--amur-safe-x:24px}
+  .nav-links{display:flex!important;overflow-x:auto!important;white-space:nowrap!important;scrollbar-width:none!important}
+  .nav-links::-webkit-scrollbar{display:none}
+  .scene>.shell{height:calc(100svh - 88px)!important}
+  .scene-grid.hero-grid{grid-template-columns:.9fr 1.1fr!important;gap:30px!important}
+  .hero-art{min-height:0!important;height:66vh!important}
+  .logo-float{width:min(52vw,560px)!important}
+  .hero-copy h1{font-size:clamp(44px,6vw,68px)!important}
+  .about-layout{grid-template-columns:1.18fr .82fr!important;gap:24px!important;align-items:center!important}
+  .portrait-zone{min-height:0!important;height:54vh!important}
+  .portrait{width:min(42vw,470px)!important}
+  .scene-work .work-list{height:52vh!important;max-height:52vh!important}
+  .services-stage{max-height:58vh!important;overflow:hidden!important}
+  .process-scene{grid-template-columns:.82fr 1.18fr!important;grid-template-areas:"k k" "copy stack" "line line"!important;gap:12px 30px!important}
+  .process-stack{min-height:0!important;height:50vh!important}
+}
+
+/* Phone — SAME sections and SAME pinned mechanism; only the layout adapts. */
+@media (max-width:760px){
+  :root{--amur-header-h:62px;--amur-safe-x:14px}
+  .site-header{height:var(--amur-header-h)!important}
+  .site-header .nav{height:100%!important;padding:8px 14px!important;gap:10px!important}
+  .brand{font-size:18px!important;flex:0 0 auto}
+  .nav-links{
+    display:flex!important; /* override the old mobile hide rule */
+    flex:1 1 auto!important;
+    min-width:0!important;
+    max-width:none!important;
+    overflow-x:auto!important;
+    gap:13px!important;
+    white-space:nowrap!important;
+    scrollbar-width:none!important;
+  }
+  .nav-links::-webkit-scrollbar{display:none!important}
+  .nav-links a{font-size:8px!important;letter-spacing:.08em!important;flex:0 0 auto!important}
+  .nav-meta{flex:0 0 auto!important}
+  .nav-meta .nav-caption,.nav-meta .scene-count{display:none!important}
+  .lang-toggle{min-width:38px!important;height:30px!important;padding:0 9px!important;font-size:9px!important}
+
+  .scene{align-items:stretch!important;padding-top:var(--amur-header-h)!important;padding-bottom:10px!important}
+  .scene>.shell{height:calc(100svh - var(--amur-header-h) - 10px)!important;max-height:none!important;width:calc(100% - 28px)!important;transform:none!important}
+  .scene-kicker{margin-bottom:10px!important;gap:10px!important}
+  .scene-kicker span,.scene-kicker b{font-size:8px!important}
+
+  /* HERO — art + copy both visible inside one mobile viewport. */
+  .scene-grid.hero-grid{
+    height:100%!important;
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    grid-template-rows:minmax(0,42%) minmax(0,58%)!important;
+    gap:0!important;
+    align-items:center!important;
+  }
+  .hero-art{order:1!important;min-height:0!important;height:100%!important;display:flex!important;align-items:center!important;justify-content:center!important}
+  .logo-float{width:min(68vw,40svh)!important;max-height:100%!important}
+  .hero-copy{order:2!important;padding:0!important;align-self:center!important;overflow:hidden!important}
+  .glass-pill{margin-bottom:10px!important;padding:7px 10px!important;font-size:7px!important;max-width:100%!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+  .hero-copy h1{font-size:clamp(31px,10.2vw,44px)!important;line-height:1.02!important;margin:8px 0 12px!important;max-width:100%!important}
+  .hero-copy h1 span{white-space:normal!important}
+  .hero-copy p{font-size:11px!important;line-height:1.55!important;max-width:100%!important;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+  .hero-actions{margin-top:12px!important;gap:12px!important}
+  .hero-actions .line-link{font-size:9px!important;padding-bottom:6px!important}
+  .hero-actions small{font-size:7px!important}
+  .scroll-cue{bottom:4px!important;transform:translateX(-50%) scale(.78)!important}
+
+  /* ABOUT — all feature blocks have their own allocated space. */
+  .about-scene{height:100%!important;display:flex!important;flex-direction:column!important;overflow:hidden!important}
+  .about-name{margin-bottom:8px!important}
+  .about-name h2{font-size:clamp(22px,7vw,32px)!important;line-height:1.05!important}
+  .about-name p{font-size:9px!important;margin-top:4px!important}
+  .about-layout{
+    flex:1 1 auto!important;min-height:0!important;
+    display:grid!important;grid-template-columns:1fr!important;
+    grid-template-rows:minmax(0,64%) minmax(0,36%)!important;
+    gap:6px!important;align-items:stretch!important;
+  }
+  .about-copy{min-height:0!important;overflow:hidden!important}
+  .about-copy h3{font-size:clamp(20px,6.3vw,30px)!important;line-height:1.13!important;margin-bottom:10px!important}
+  .about-points{gap:5px!important}
+  .about-points p{font-size:10px!important;line-height:1.45!important;padding:5px 0!important}
+  .signature{margin-top:8px!important}
+  .signature small,.signature strong{font-size:8px!important}
+  .portrait-zone{min-height:0!important;height:100%!important;overflow:hidden!important}
+  .portrait{height:100%!important;width:auto!important;max-width:78vw!important;object-fit:contain!important;margin:auto!important}
+
+  /* WORK — title area owns the top; projects own the rest. */
+  .scene-work .work-scene{height:100%!important;display:flex!important;flex-direction:column!important;padding-inline:0!important}
+  .scene-work .work-head{display:block!important;margin-bottom:8px!important;flex:0 0 auto!important}
+  .scene-work .work-head h2{font-size:clamp(28px,8.5vw,40px)!important;line-height:1.02!important;margin-bottom:5px!important}
+  .scene-work .work-head p{font-size:9.5px!important;line-height:1.45!important;max-width:95%!important}
+  .scene-work .work-beat,.idea-cluster{display:none!important}
+  .scene-work .work-list{
+    flex:1 1 auto!important;min-height:0!important;height:auto!important;max-height:none!important;
+    overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory!important;
+    -webkit-overflow-scrolling:touch!important;padding-bottom:6px!important;
+  }
+  .scene-work .work-list::-webkit-scrollbar{display:none!important}
+  .work-horizontal-track{height:100%!important;gap:12px!important;padding-inline:0!important}
+  .work-logo-scene{height:100%!important;min-height:0!important;flex:0 0 84vw!important;scroll-snap-align:center!important}
+  .work-logo-top{padding:12px!important;font-size:8px!important}
+  .work-logo-bottom{padding:12px!important}
+  .work-logo-bottom h3{font-size:clamp(18px,6vw,26px)!important}
+  .work-logo-bottom p{font-size:9px!important;line-height:1.45!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+  /* SERVICES — reserve a fixed header and a flexible rail for all services. */
+  .services-scene{height:100%!important;display:flex!important;flex-direction:column!important;overflow:hidden!important}
+  .services-head{flex:0 0 auto!important;margin-bottom:8px!important}
+  .services-head h2{font-size:clamp(27px,8vw,39px)!important;line-height:1.02!important}
+  .services-stage{flex:1 1 auto!important;min-height:0!important;max-height:none!important;overflow:hidden!important}
+  .services{height:100%!important;display:grid!important;grid-template-rows:repeat(4,minmax(0,1fr))!important}
+  .service-row{min-height:0!important;padding:7px 0!important;overflow:hidden!important}
+  .service-row h3{font-size:clamp(18px,5.6vw,25px)!important;line-height:1.05!important;margin:3px 0!important}
+  .service-row p{font-size:9px!important;line-height:1.38!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .service-row span,.service-row small{font-size:7px!important}
+
+  /* PROCESS — copy gets the top; active card gets the rest. */
+  .process-scene{
+    height:100%!important;display:grid!important;
+    grid-template-columns:1fr!important;
+    grid-template-areas:"k" "copy" "stack" "line"!important;
+    grid-template-rows:auto auto minmax(0,1fr) auto!important;
+    gap:7px!important;overflow:hidden!important;
+  }
+  .process-copy h2{font-size:clamp(27px,8vw,39px)!important;line-height:1.02!important;margin-bottom:5px!important}
+  .process-copy p{font-size:9.5px!important;line-height:1.45!important}
+  .process-stack{min-height:0!important;height:auto!important;overflow:hidden!important}
+  .process-card{justify-content:center!important;padding:4px 0!important}
+  .process-card h3{font-size:clamp(24px,7.3vw,34px)!important;line-height:1.06!important;margin:10px 0!important}
+  .process-card p{font-size:10px!important;line-height:1.5!important;max-width:100%!important}
+  .process-card small{font-size:8px!important}
+  .process-visual{opacity:.45!important;transform:scale(.72)!important;transform-origin:center!important}
+  .timeline{margin-bottom:2px!important}
+
+  /* CONTACT is a full page too. */
+  .contact{min-height:100svh!important;height:100svh!important;overflow:hidden!important;padding-top:var(--amur-header-h)!important}
+  .contact-inner{height:calc(100svh - var(--amur-header-h))!important;display:flex!important;flex-direction:column!important;justify-content:center!important;transform:none!important;overflow:hidden!important}
+  .contact-copy h2{font-size:clamp(31px,9vw,44px)!important;line-height:1.04!important}
+  .contact-copy p{font-size:11px!important;line-height:1.55!important}
+  .giant{font-size:clamp(86px,30vw,170px)!important;line-height:.8!important}
+
+  /* PROJECT PAGE — one project step owns the viewport, with readable overflow. */
+  .single-project-experience-page .px-sticky{height:100svh!important;min-height:100svh!important}
+  .single-project-experience-page .px-shell{height:100svh!important;padding-top:var(--amur-header-h)!important;overflow:hidden!important}
+  .single-project-experience-page .px-stage{height:100%!important;overflow:hidden!important}
+  .single-project-experience-page .px-layout-grid{
+    width:calc(100vw - 28px)!important;height:calc(100svh - 122px)!important;margin:72px auto 0!important;
+    display:grid!important;grid-template-columns:1fr!important;grid-template-areas:"visual" "copy"!important;
+    grid-template-rows:minmax(0,48%) minmax(0,52%)!important;gap:10px!important;align-content:stretch!important;
+  }
+  .single-project-experience-page .px-grid-visual{height:100%!important;min-height:0!important;overflow:hidden!important}
+  .single-project-experience-page .px-grid-copy{height:100%!important;min-height:0!important;max-height:none!important;overflow:auto!important;padding:2px 2px 12px!important;overscroll-behavior:contain!important}
+  .single-project-experience-page .px-grid-copy::-webkit-scrollbar{width:0}
+  .single-project-experience-page .px-grid-title{font-size:clamp(25px,7.6vw,36px)!important;line-height:1.08!important;margin:5px 0 8px!important}
+  .single-project-experience-page .px-grid-body{font-size:12px!important;line-height:1.65!important;margin-top:8px!important}
+  .single-project-experience-page .px-media-deck,.single-project-experience-page .px-image{height:100%!important;max-height:100%!important}
+  .single-project-experience-page .px-products-grid-head{width:calc(100vw - 28px)!important;margin:72px auto 10px!important}
+  .single-project-experience-page .px-products-grid-head h2{font-size:clamp(25px,7.6vw,36px)!important}
+  .single-project-experience-page .px-products-grid-description{font-size:11px!important;line-height:1.55!important}
+  .single-project-experience-page .px-products-grid-row{width:100vw!important;height:52svh!important;padding-inline:14px!important;gap:14px!important;overflow-x:auto!important;scroll-snap-type:x mandatory!important}
+  .single-project-experience-page .px-product-grid-item{flex:0 0 78vw!important;min-width:78vw!important;height:100%!important;scroll-snap-align:center!important}
+  .single-project-experience-page .px-project-name{top:68px!important;width:92vw!important;font-size:14px!important}
+  .single-project-experience-page .px-topline{top:64px!important}
+  .single-project-experience-page .px-hint{bottom:6px!important}
+}
+
+/* Very small phones */
+@media (max-width:380px){
+  .nav-links{gap:10px!important}
+  .nav-links a{font-size:7px!important}
+  .hero-copy h1{font-size:30px!important}
+  .about-copy h3{font-size:19px!important}
+  .service-row h3{font-size:17px!important}
+  .single-project-experience-page .px-layout-grid{grid-template-rows:minmax(0,45%) minmax(0,55%)!important}
+}
+
+/* Landscape phones: use width efficiently instead of stacking too tall. */
+@media (max-height:540px) and (orientation:landscape){
+  :root{--amur-header-h:52px}
+  .site-header .nav{padding:5px 12px!important}
+  .scene-grid.hero-grid{grid-template-columns:.8fr 1.2fr!important;grid-template-rows:1fr!important;gap:20px!important}
+  .hero-art,.hero-copy{order:initial!important;height:100%!important}
+  .logo-float{width:min(36vw,70vh)!important}
+  .about-layout{grid-template-columns:1.25fr .75fr!important;grid-template-rows:1fr!important}
+  .portrait-zone{height:100%!important}
+  .single-project-experience-page .px-layout-grid{grid-template-columns:1.05fr .95fr!important;grid-template-areas:"visual copy"!important;grid-template-rows:1fr!important;height:calc(100svh - 84px)!important;margin-top:54px!important}
+}

@@ -1,0 +1,8 @@
+AMUR FINAL V36
+
+- English is the default public language.
+- AR/EN toggle now covers static UI, project cards, project page chrome, and bilingual project content.
+- Admin stores Arabic + English in the SAME existing text columns using a safe packed format, so no SQL migration is required.
+- Existing Arabic content is translated with the built-in legacy map for the current CHECKMATE / ELALAMY / EXPERT content; opening and saving a project in Admin will persist both language versions.
+- Typography and responsive behavior are enforced inline after all previous CSS so old rules cannot override them.
+- Keep your existing js/config.js.
