@@ -50,6 +50,61 @@ body.lang-ar .hero-copy h1,body.lang-ar .about-copy h3,body.lang-ar .work-head h
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
 </style>
 
+
+<style id="amur-mobile-fix-v43">
+/* MOBILE ONLY — desktop is intentionally untouched */
+@media (max-width:760px){
+  /* 1) Shorter, faster mobile story scroll */
+  .story{height:640svh!important;min-height:640svh!important}
+  .story-stage{height:100svh!important;min-height:100svh!important}
+
+  /* 2) Hero logo must never block vertical touch scrolling */
+  .hero-art,.logo-float,#logoDrag,#logoRotor{touch-action:pan-y!important}
+  #logoDrag{pointer-events:none!important}
+
+  /* 3) Selected Work: show all projects at once instead of one-at-a-time */
+  .work-list{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    grid-auto-flow:row!important;
+    gap:12px!important;
+    width:100%!important;
+    overflow:visible!important;
+    scroll-snap-type:none!important;
+    -webkit-overflow-scrolling:auto!important;
+  }
+  .work-list>*{
+    position:relative!important;
+    inset:auto!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin:0!important;
+    transform:none!important;
+    opacity:1!important;
+    visibility:visible!important;
+    scroll-snap-align:none!important;
+  }
+
+  /* 4) About portrait: smaller and show more than just the face */
+  .portrait-zone{
+    width:min(72vw,290px)!important;
+    max-width:290px!important;
+    height:auto!important;
+    min-height:0!important;
+    margin-inline:auto!important;
+    overflow:visible!important;
+  }
+  .portrait{
+    width:100%!important;
+    height:auto!important;
+    max-height:40svh!important;
+    object-fit:contain!important;
+    object-position:center top!important;
+  }
+}
+</style>
+
 </head>
 
 <body>

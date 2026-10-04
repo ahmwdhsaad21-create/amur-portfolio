@@ -24,6 +24,119 @@
 @media(max-width:760px){.px-header .nav{padding:12px 16px!important;gap:10px!important}.px-nav-meta .nav-caption{display:none!important}.project-back{font-size:10px!important}.px-grid-title,.px-products-grid-head h2{font-size:clamp(30px,9vw,42px)!important}.px-grid-body,.px-products-grid-description{font-size:13px!important;line-height:1.75!important}.px-layout-grid{grid-template-columns:1fr!important;gap:22px!important}.px-grid-visual{min-width:0!important}.px-media-deck,.px-image{max-width:100%!important}.px-exit h2{font-size:clamp(34px,11vw,52px)!important}.px-product-grid-item{min-width:78vw!important}.px-products-grid-row{overflow-x:auto!important;scroll-snap-type:x mandatory!important;-webkit-overflow-scrolling:touch!important}.px-product-grid-item{scroll-snap-align:center!important}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
 </style>
+
+<style id="amur-project-mobile-fix-v43">
+/* MOBILE ONLY — desktop is intentionally untouched */
+@media (max-width:760px){
+  /* 1) Keep the project header clean and separated */
+  .px-header .nav{
+    display:grid!important;
+    grid-template-columns:auto 1fr auto!important;
+    align-items:center!important;
+    gap:8px!important;
+    padding:10px 14px!important;
+  }
+  .px-header .brand{justify-self:start!important}
+  .project-back{
+    justify-self:center!important;
+    white-space:nowrap!important;
+    max-width:100%!important;
+    line-height:1.15!important;
+  }
+  .px-nav-meta{justify-self:end!important}
+
+  /* 2) Prevent the top project copy from sitting on top of itself */
+  .px-topline{
+    position:relative!important;
+    inset:auto!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:10px!important;
+    flex-wrap:wrap!important;
+    width:100%!important;
+    line-height:1.25!important;
+  }
+  .px-stage h1,.px-stage h2,.px-stage h3,.px-project-name,
+  .px-grid-title,.px-products-grid-head h2{
+    max-width:100%!important;
+    line-height:1.06!important;
+    overflow-wrap:anywhere!important;
+    word-break:normal!important;
+  }
+  .px-stage p,.px-grid-body,.px-products-grid-description{
+    max-width:100%!important;
+    overflow-wrap:anywhere!important;
+  }
+
+  /* 3) Make the project logo smaller and never let it steal touch scroll */
+  .px-stage [class*="logo"]{touch-action:pan-y!important;pointer-events:none!important}
+  .px-stage [class*="logo"] img,
+  .px-stage img[class*="logo"]{
+    width:auto!important;
+    max-width:min(64vw,250px)!important;
+    height:auto!important;
+    max-height:27svh!important;
+    object-fit:contain!important;
+  }
+
+  /* 4) Clean mobile content sections: text and image get separate space */
+  .px-layout-grid{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    grid-auto-flow:row!important;
+    align-items:start!important;
+    gap:18px!important;
+    width:100%!important;
+  }
+  .px-layout-grid>*{
+    position:relative!important;
+    inset:auto!important;
+    max-width:100%!important;
+    min-width:0!important;
+    transform:none!important;
+  }
+  .px-grid-copy{order:1!important;width:100%!important}
+  .px-grid-visual{order:2!important;width:100%!important;min-width:0!important}
+  .px-grid-visual img,.px-image{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    height:auto!important;
+    object-fit:contain!important;
+  }
+
+  /* 5) Products / shirts: show all items, two per row */
+  .px-products-grid-row{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    grid-auto-flow:row!important;
+    gap:12px!important;
+    width:100%!important;
+    overflow:visible!important;
+    scroll-snap-type:none!important;
+    -webkit-overflow-scrolling:auto!important;
+  }
+  .px-product-grid-item{
+    position:relative!important;
+    inset:auto!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    transform:none!important;
+    opacity:1!important;
+    visibility:visible!important;
+    scroll-snap-align:none!important;
+  }
+  .px-product-grid-item img{
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    object-fit:contain!important;
+  }
+}
+</style>
+
 </head>
 
 <body class="single-project-experience-page">
